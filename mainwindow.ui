@@ -23,11 +23,16 @@
       <height>311</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Inter</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../clip-library-1.png</pixmap>
+     <pixmap>images/clip-library-1.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
