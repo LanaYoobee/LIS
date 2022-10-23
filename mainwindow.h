@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QtSql>
-#include <QSqlDatabase>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
