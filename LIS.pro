@@ -11,10 +11,20 @@ QT += sql
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    openwall_crypt/crypt_blowfish.c \
+    openwall_crypt/crypt_gensalt.c \
+    openwall_crypt/wrapper.c \
+    qtbcrypt.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    openwall_crypt/crypt.h \
+    openwall_crypt/crypt_blowfish.h \
+    openwall_crypt/crypt_gensalt.h \
+    openwall_crypt/ow-crypt.h \
+    openwall_crypt/x86.S \
+    qtbcrypt.h
 
 FORMS += \
     mainwindow.ui
@@ -23,3 +33,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resources.qrc
+
+DISTFILES += \
+

@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/clip-library-1.png</file>
+        <file>images/icons8-add-user-male-64.png</file>
+        <file>images/icons8-book-64.png</file>
+        <file>images/icons8-books-64.png</file>
+        <file>images/icons8-book-shelf-64.png</file>
+        <file>images/icons8-borrow-book-64.png</file>
+        <file>images/icons8-delete-file-64.png</file>
+        <file>images/icons8-edit-file-64.png</file>
+        <file>images/icons8-edit-profile-64.png</file>
+        <file>images/icons8-magazine-64.png</file>
+        <file>images/icons8-ok-64.png</file>
+        <file>images/icons8-registration-64.png</file>
+        <file>images/icons8-remove-user-female-64.png</file>
+        <file>images/icons8-return-64.png</file>
+        <file>images/icons8-save-close-64.png</file>
+        <file>images/icons8-search-64.png</file>
+        <file>images/icons8-search-property-64.png</file>
+    </qresource>
+</RCC>
