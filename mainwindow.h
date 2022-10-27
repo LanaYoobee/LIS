@@ -20,6 +20,8 @@ public:
 private slots:
     void on_passwordEntry_returnPressed();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
