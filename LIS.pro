@@ -10,6 +10,7 @@ QT += sql
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    librarymain.cpp \
     main.cpp \
     mainwindow.cpp \
     openwall_crypt/crypt_blowfish.c \
@@ -18,6 +19,7 @@ SOURCES += \
     qtbcrypt.cpp
 
 HEADERS += \
+    librarymain.h \
     mainwindow.h \
     openwall_crypt/crypt.h \
     openwall_crypt/crypt_blowfish.h \
@@ -27,6 +29,7 @@ HEADERS += \
     qtbcrypt.h
 
 FORMS += \
+    librarymain.ui \
     mainwindow.ui
 
 # Default rules for deployment.

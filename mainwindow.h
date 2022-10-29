@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtSql>
 #include <QMessageBox>
+#include "librarymain.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -13,9 +14,12 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+
 
 private slots:
     void on_passwordEntry_returnPressed();
@@ -24,5 +28,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    librarymain *libraryMain;
 };
 #endif // MAINWINDOW_H

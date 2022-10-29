@@ -55,7 +55,9 @@ void MainWindow::on_passwordEntry_returnPressed()
             if (admin=="Y")
             {
                 this->hide();
-                QMessageBox::information(this, "Log In Admin User","Welcome, "+user);
+                //QMessageBox::information(this, "Log In Admin User","Welcome, "+user);
+                libraryMain = new librarymain(this);
+                libraryMain->show();
             }
             else if (admin=="N")
             {
@@ -70,27 +72,27 @@ void MainWindow::on_passwordEntry_returnPressed()
 }
 
 
-//void MainWindow::on_pushButton_clicked()
+void MainWindow::on_pushButton_clicked()
 
-//{
+{
 
-//    QSqlDatabase db;
-//    db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("../LIS/db.sqlite");
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("../LIS/db.sqlite");
 
-//    if(!db.open())
-//    {
-//        qDebug()<<"problem opening database";
-//    }
+    if(!db.open())
+    {
+        qDebug()<<"problem opening database";
+    }
 
-//    QSqlQuery qry;
-//    QString salt = QtBCrypt::generateSalt();
-//    QString hashedPassword = QtBCrypt::hashPassword("sillyPassword", salt);
+    QSqlQuery qry;
+    QString salt = QtBCrypt::generateSalt();
+    QString hashedPassword = QtBCrypt::hashPassword("sillyPassword", salt);
 
-//    qry.prepare("INSERT INTO users(ID, username, password, salt, first_name, surname, phone, admin) VALUES(1,'newUser',:password,:salt,'Admin','secondAdmin',1232132,'Y');");
-//    qry.bindValue(":password", hashedPassword);
-//    qry.bindValue(":salt", salt);
-//    qry.exec();
+    qry.prepare("INSERT INTO users(ID, username, password, salt, first_name, surname, phone, admin) VALUES(1,'newUser',:password,:salt,'Admin','secondAdmin',1232132,'Y');");
+    qry.bindValue(":password", hashedPassword);
+    qry.bindValue(":salt", salt);
+    qry.exec();
 
-//}
+}
 
