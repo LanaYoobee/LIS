@@ -16,7 +16,7 @@ public:
     ~adminMain();
 
 private slots:
-    void on_returnButton_clicked();
+    void on_quitButton_clicked();
 
 private:
     Ui::adminMain *ui;

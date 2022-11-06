@@ -10,19 +10,17 @@ QT += sql
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    adminmain.cpp \
+    login.cpp \
     main.cpp \
-    mainwindow.cpp \
-    membermain.cpp \
+    mainscreen.cpp \
     openwall_crypt/crypt_blowfish.c \
     openwall_crypt/crypt_gensalt.c \
     openwall_crypt/wrapper.c \
     qtbcrypt.cpp
 
 HEADERS += \
-    adminmain.h \
-    mainwindow.h \
-    membermain.h \
+    login.h \
+    mainscreen.h \
     openwall_crypt/crypt.h \
     openwall_crypt/crypt_blowfish.h \
     openwall_crypt/crypt_gensalt.h \
@@ -31,9 +29,8 @@ HEADERS += \
     qtbcrypt.h
 
 FORMS += \
-    adminmain.ui \
-    mainwindow.ui \
-    membermain.ui
+    login.ui \
+    mainscreen.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

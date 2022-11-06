@@ -16,7 +16,7 @@ adminMain::~adminMain()
     delete ui;
 }
 
-void adminMain::on_returnButton_clicked()
+void adminMain::on_quitButton_clicked()
 {
     QApplication::quit();
 
