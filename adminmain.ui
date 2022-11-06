@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>librarymain</class>
- <widget class="QDialog" name="librarymain">
+ <class>adminMain</class>
+ <widget class="QDialog" name="adminMain">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -13,18 +13,6 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QStackedWidget" name="stackedWidget">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>123</y>
-     <width>1056</width>
-     <height>601</height>
-    </rect>
-   </property>
-   <widget class="QWidget" name="page"/>
-   <widget class="QWidget" name="page_2"/>
-  </widget>
   <widget class="QPushButton" name="returnButton">
    <property name="geometry">
     <rect>
@@ -61,11 +49,11 @@
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>24</pointsize>
+     <pointsize>12</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>sdfds</string>
    </property>
   </widget>
  </widget>
