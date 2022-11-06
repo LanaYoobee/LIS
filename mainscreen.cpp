@@ -7,13 +7,15 @@ mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
     ui(new Ui::mainscreen)
 {
     ui->setupUi(this);
-    ui->welcomeLabel->setText("Welcome, "+user); //greet the user with the first name we got from the db
+    ui->welcomeLabel->setText("Welcome, "+user+"!"); //greet the user with the first name we got from the db
 
     //if the user is not an admin, hide admin function buttons
     if (admin == 0)
     {
         ui->maintainUsersButton->hide();
         ui->maintainUsersLabel->hide();
+        ui->maintainBooksButton->hide();
+        ui->maintainBooksLabel->hide();
     }
 
 }
