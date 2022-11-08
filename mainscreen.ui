@@ -33,7 +33,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Welcome, Member</string>
+    <string>Welcome, &lt;user name&gt;!</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quitButton">

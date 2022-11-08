@@ -4,12 +4,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 QT += sql
+QT += network
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    browse.cpp \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -19,6 +21,7 @@ SOURCES += \
     qtbcrypt.cpp
 
 HEADERS += \
+    browse.h \
     login.h \
     mainscreen.h \
     openwall_crypt/crypt.h \
@@ -29,6 +32,7 @@ HEADERS += \
     qtbcrypt.h
 
 FORMS += \
+    browse.ui \
     login.ui \
     mainscreen.ui
 

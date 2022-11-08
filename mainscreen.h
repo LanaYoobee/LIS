@@ -18,6 +18,16 @@ public:
 private slots:
     void on_quitButton_clicked();
 
+    void on_maintainUsersButton_clicked();
+
+    void on_maintainBooksButton_clicked();
+
+    void on_browseCatalogueButton_clicked();
+
+    void on_searchBookButton_clicked();
+
+    void on_viewOwnAccountButton_clicked();
+
 private:
     Ui::mainscreen *ui;
 };
