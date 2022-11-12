@@ -2,7 +2,6 @@
 #define LOGIN_H
 
 #include <QMainWindow>
-#include <QtSql>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE

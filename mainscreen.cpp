@@ -2,6 +2,7 @@
 #include "ui_mainscreen.h"
 #include "login.h"
 #include "browse.h"
+#include "db_connect.h"
 
 mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
     QDialog(parent),
@@ -29,10 +30,11 @@ mainscreen::~mainscreen()
 //the back button on the main screen logs out the user and brings up the login screen again.
 void mainscreen::on_quitButton_clicked()
 {
-    this->hide();
+    login l;
+    l.show();
+    this->close();
     QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
-    login *l = new login(this);
-    l->show();
+
 }
 
 

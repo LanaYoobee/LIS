@@ -2,6 +2,7 @@
 #include "ui_login.h"
 #include "qtbcrypt.h"
 #include "mainscreen.h"
+#include "db_connect.h"
 
 
 login::login(QWidget *parent)
@@ -21,15 +22,7 @@ login::~login()
 void login::on_passwordEntry_returnPressed()
 {
 
-    //connect to the database and open it
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("../LIS/db.sqlite");
-
-    if(!db.open())
-    {
-        qDebug()<<"problem opening database";
-    }
+    db_connect db;
 
     //set up variables needed for authentication
     QSqlQuery qry;
@@ -61,7 +54,7 @@ void login::on_passwordEntry_returnPressed()
         //if the hash of the entered password with our stored salt matches our stored hashed password, then it must be the same, so we can let the user in.
         if (hashedPassword == storedPassword)
         {
-            this->hide(); //we can hide the login window once we've let the user in
+            this->close(); //we can hide the login window once we've let the user in
 
             admin = qry.value(3).toInt(); //once we've let the user in, we need to know if they're an admin (value stored in the db)
             user = qry.value(4).toString(); //we also need to know their name, so we can greet them

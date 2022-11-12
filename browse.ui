@@ -60,7 +60,7 @@
     </size>
    </property>
   </widget>
-  <widget class="QLabel" name="bookNameLabel">
+  <widget class="QLabel" name="bookNameLabel_1">
    <property name="geometry">
     <rect>
      <x>65</x>
@@ -84,7 +84,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLabel" name="bookImage">
+  <widget class="QLabel" name="bookImage_1">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -111,6 +111,1197 @@
    </property>
    <property name="text">
     <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_2">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_3">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_4">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_5">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_6">
+   <property name="geometry">
+    <rect>
+     <x>505</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_7">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_8">
+   <property name="geometry">
+    <rect>
+     <x>675</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_9">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_10">
+   <property name="geometry">
+    <rect>
+     <x>845</x>
+     <y>172</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_3">
+   <property name="geometry">
+    <rect>
+     <x>235</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_4">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_5">
+   <property name="geometry">
+    <rect>
+     <x>405</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_6">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_7">
+   <property name="geometry">
+    <rect>
+     <x>582</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_8">
+   <property name="geometry">
+    <rect>
+     <x>667</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_9">
+   <property name="geometry">
+    <rect>
+     <x>752</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_10">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>254</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>8</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_19">
+   <property name="geometry">
+    <rect>
+     <x>752</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_19">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_13">
+   <property name="geometry">
+    <rect>
+     <x>235</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_15">
+   <property name="geometry">
+    <rect>
+     <x>405</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_11">
+   <property name="geometry">
+    <rect>
+     <x>65</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_12">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_20">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_12">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_15">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_11">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_17">
+   <property name="geometry">
+    <rect>
+     <x>582</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_20">
+   <property name="geometry">
+    <rect>
+     <x>845</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_18">
+   <property name="geometry">
+    <rect>
+     <x>675</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_17">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_13">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_14">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_16">
+   <property name="geometry">
+    <rect>
+     <x>505</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_16">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_14">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>345</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_18">
+   <property name="geometry">
+    <rect>
+     <x>667</x>
+     <y>427</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_30">
+   <property name="geometry">
+    <rect>
+     <x>830</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_25">
+   <property name="geometry">
+    <rect>
+     <x>405</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_25">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_29">
+   <property name="geometry">
+    <rect>
+     <x>752</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_26">
+   <property name="geometry">
+    <rect>
+     <x>505</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_21">
+   <property name="geometry">
+    <rect>
+     <x>65</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_29">
+   <property name="geometry">
+    <rect>
+     <x>760</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_28">
+   <property name="geometry">
+    <rect>
+     <x>667</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_22">
+   <property name="geometry">
+    <rect>
+     <x>165</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_23">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_22">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_24">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_21">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_28">
+   <property name="geometry">
+    <rect>
+     <x>675</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_26">
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_24">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_27">
+   <property name="geometry">
+    <rect>
+     <x>582</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookNameLabel_23">
+   <property name="geometry">
+    <rect>
+     <x>235</x>
+     <y>600</y>
+     <width>93</width>
+     <height>48</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>15</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Book Name</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_27">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bookImage_30">
+   <property name="geometry">
+    <rect>
+     <x>845</x>
+     <y>518</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="resources.qrc">:/images/images/icons8-book-64.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QPlainTextEdit" name="plainTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>20</y>
+     <width>471</width>
+     <height>71</height>
+    </rect>
    </property>
   </widget>
  </widget>

@@ -8,6 +8,9 @@
 #include <QAuthenticator>
 #include <QNetworkReply>
 #include <QImageReader>
+#include <QLabel>
+#include <QMessageBox>
+#include <QtNetwork/QSslConfiguration>
 
 namespace Ui {
 class browse;

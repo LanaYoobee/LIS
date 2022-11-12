@@ -12,6 +12,7 @@ QT += network
 
 SOURCES += \
     browse.cpp \
+    db_connect.cpp \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -22,6 +23,7 @@ SOURCES += \
 
 HEADERS += \
     browse.h \
+    db_connect.h \
     login.h \
     mainscreen.h \
     openwall_crypt/crypt.h \
