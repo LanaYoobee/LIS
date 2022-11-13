@@ -11,8 +11,10 @@ QT += network
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bookdetails.cpp \
     browse.cpp \
     db_connect.cpp \
+    imagefromurl.cpp \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -22,8 +24,10 @@ SOURCES += \
     qtbcrypt.cpp
 
 HEADERS += \
+    bookdetails.h \
     browse.h \
     db_connect.h \
+    imagefromurl.h \
     login.h \
     mainscreen.h \
     openwall_crypt/crypt.h \
@@ -34,6 +38,7 @@ HEADERS += \
     qtbcrypt.h
 
 FORMS += \
+    bookdetails.ui \
     browse.ui \
     login.ui \
     mainscreen.ui

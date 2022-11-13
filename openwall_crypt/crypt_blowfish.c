@@ -82,7 +82,7 @@ typedef struct {
  * The string is "OrpheanBeholderScryDoubt" on big-endian.
  */
 static BF_word BF_magic_w[6] = {
-	0x4F727068, 0x65616E42, 0x65686F6C,
+    0x4F727068, 0x65616E42, 0x65686F6C,
 	0x64657253, 0x63727944, 0x6F756274
 };
 
@@ -447,7 +447,7 @@ static void BF_swap(BF_word *x, int count)
 	if (*is_little_endian)
 	do {
 		tmp = *x;
-		tmp = (tmp << 16) | (tmp >> 16);
+        tmp = (tmp << 16) | (tmp >> 16);
 		*x++ = ((tmp & 0x00FF00FF) << 8) | ((tmp >> 8) & 0x00FF00FF);
 	} while (--count);
 }
@@ -458,7 +458,7 @@ static void BF_swap(BF_word *x, int count)
 	tmp1 = L & 0xFF; \
 	tmp2 = L >> 8; \
 	tmp2 &= 0xFF; \
-	tmp3 = L >> 16; \
+    tmp3 = L >> 16; \
 	tmp3 &= 0xFF; \
 	tmp4 = L >> 24; \
 	tmp1 = data.ctx.S[3][tmp1]; \
@@ -686,7 +686,7 @@ static char *BF_crypt(const char *key, const char *setting,
 	}
 
 	count = (BF_word)1 << ((setting[4] - '0') * 10 + (setting[5] - '0'));
-	if (count < min || BF_decode(data.binary.salt, &setting[7], 16)) {
+    if (count < min || BF_decode(data.binary.salt, &setting[7], 16)) {
 		__set_errno(EINVAL);
 		return NULL;
 	}
@@ -832,7 +832,7 @@ char *_crypt_blowfish_rn(const char *key, const char *setting,
 
 /* Hash the supplied password */
 	_crypt_output_magic(setting, output, size);
-	retval = BF_crypt(key, setting, output, size, 16);
+    retval = BF_crypt(key, setting, output, size, 16);
 	save_errno = errno;
 
 /*
@@ -881,7 +881,7 @@ char *_crypt_blowfish_rn(const char *key, const char *setting,
 char *_crypt_gensalt_blowfish_rn(const char *prefix, unsigned long count,
 	const char *input, int size, char *output, int output_size)
 {
-	if (size < 16 || output_size < 7 + 22 + 1 ||
+    if (size < 16 || output_size < 7 + 22 + 1 ||
 	    (count && (count < 4 || count > 31)) ||
 	    prefix[0] != '$' || prefix[1] != '2' ||
 	    (prefix[2] != 'a' && prefix[2] != 'b' && prefix[2] != 'y')) {
@@ -900,7 +900,7 @@ char *_crypt_gensalt_blowfish_rn(const char *prefix, unsigned long count,
 	output[5] = '0' + count % 10;
 	output[6] = '$';
 
-	BF_encode(&output[7], (const BF_word *)input, 16);
+    BF_encode(&output[7], (const BF_word *)input, 16);
 	output[7 + 22] = '\0';
 
 	return output;

@@ -3,14 +3,8 @@
 
 #include <QDialog>
 #include <QNetworkAccessManager>
-#include <QUrl>
-#include <QNetworkRequest>
-#include <QAuthenticator>
 #include <QNetworkReply>
-#include <QImageReader>
-#include <QLabel>
 #include <QMessageBox>
-#include <QtNetwork/QSslConfiguration>
 
 namespace Ui {
 class browse;
@@ -21,13 +15,18 @@ class browse : public QDialog
     Q_OBJECT
 
 public:
-    explicit browse(QWidget *parent = nullptr);
+    explicit browse(QString callType, QWidget *parent = nullptr);
     ~browse();
 
 private slots:
     void on_quitButton_clicked();
 
-    void on_pushButton_clicked();
+    void randomBooks();
+
+    void displayBooks();
+
+    //QImage img, QString title
+    void showBookDetails(QImage img, QString title);
 
 private:
     Ui::browse *ui;

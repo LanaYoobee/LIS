@@ -1,14 +1,22 @@
 #include "browse.h"
 #include "ui_browse.h"
 #include "db_connect.h"
+#include "bookdetails.h"
 
-browse::browse(QWidget *parent) :
+browse::browse(QString callType, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::browse)
 {
     ui->setupUi(this);
 
-
+if (callType == "search")
+{
+    //do something
+}
+else if (callType == "browse")
+{
+    randomBooks();
+}
 }
 
 browse::~browse()
@@ -25,68 +33,77 @@ void browse::on_quitButton_clicked()
 }
 
 
-void browse::on_pushButton_clicked()
+void browse::randomBooks()
 {
-    db_connect db;
+db_connect db;
 
-    //set up variables needed for authentication
-    QSqlQuery qry;
-    QString title, image_small;
+        ui->welcomeLabel->setText("Random selection of books");
 
-    //prepare the query. select 30 books at random.
-
-    qry.prepare("select title, image_small from books order by random() limit 1");
-    qry.exec();
-
-
-    if(qry.next()) //check if there were any results for this username
-    {
-
-        title = qry.value(0).toString(); //title of the book from the db
-        image_small = qry.value(1).toString(); //the URl from the db
-
-//for debugging purposes
-        ui->plainTextEdit->setTextInteractionFlags(Qt::TextSelectableByMouse);
-        ui->plainTextEdit->setPlainText(title);
-
-        QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
-
-        QNetworkRequest request(image_small);
-
-        QNetworkReply *reply = networkAccessManager->get(request);
-
-        QEventLoop loop;
-        connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
-        loop.exec();
-
-        QByteArray bytes = reply->readAll();
-        QImage img(64, 64, QImage::Format_RGB32);
-        img.loadFromData(bytes);
-
-        ui->bookImage_10->setPixmap(QPixmap::fromImage(img).scaledToHeight(64));
-        ui->bookNameLabel_10->setText(title);
-    }
+        displayBooks();
 
     QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
 
+}
 
+void browse::displayBooks()
+{
+    for(int i=0; i<10; i++)
+    {
+        for (int j =0; j<3; j++)
+        {
+            //set up variables needed for authentication
+            QSqlQuery qry;
+            QString title, image_small, image_large;
 
+            //prepare the query. select 1 book at random.
 
+            qry.prepare("select title, image_small, image_large from books order by random() limit 1");
+            qry.exec();
 
-    //can't figure out how to loop through all buttons
+            if(qry.next())
+            {
+                title = qry.value(0).toString(); //title of the book from the db
+                image_small = qry.value(1).toString(); //the URl from the db
+                image_large = qry.value(1).toString(); //the URl from the db
+            }
 
-//    for (int i = 1; i <=30; i++)
-//    {
-//        labels.append(new QLable(Qstring:number(30-i)));
+            QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
 
-//       // QLineEdit *edit = ui->findChild<QLineEdit *>(name_template.arg(i));
-//      //  answers += edit->text();
-//       // ui->("bookImage_"+i)->
-//    }
+            QNetworkRequest request(image_small);
 
-//    for(int i=0; i<=30; i++)
-//    {
-//        ui->bookImage_10>setPixmap(QPixmap::fromImage(img).scaledToHeight(64));
-//    }
+            QNetworkReply *reply = networkAccessManager->get(request);
+
+            QEventLoop loop;
+            connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
+            loop.exec();
+
+            QByteArray bytes = reply->readAll();
+            QImage img(64, 64, QImage::Format_RGB32);
+            img.loadFromData(bytes);
+
+            QPushButton *bookButton = new QPushButton(this);
+            QLabel *bookLabel = new QLabel();
+
+            bookButton->setMinimumSize(64,64);
+            bookButton->setMaximumSize(64,64);
+            bookButton->setIconSize(QSize(64,64));
+            QIcon buttonIcon(QPixmap::fromImage(img));
+            bookButton->setIcon(buttonIcon);
+
+            bookLabel->setWordWrap(1);
+            bookLabel->setText(title);
+
+            ui->gridLayout->addWidget(bookButton, j, i);
+//            ui->gridLayout->addWidget(bookLabel, j+1, i);
+            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img, title);});
+        }
+    }
+}
+
+void browse::showBookDetails(QImage img, QString title)
+{//img, title,
+
+    BookDetails *bd = new BookDetails(img, title, this); //pass their first name and the admin status to the main screen window
+    bd->show(); //show the main screen window
 }
 

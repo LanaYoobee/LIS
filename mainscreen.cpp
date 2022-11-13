@@ -9,6 +9,7 @@ mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
     ui(new Ui::mainscreen)
 {
     ui->setupUi(this);
+
     ui->welcomeLabel->setText("Welcome, "+user+"!"); //greet the user with the first name we got from the db
 
     //if the user is not an admin, hide admin function buttons
@@ -30,10 +31,17 @@ mainscreen::~mainscreen()
 //the back button on the main screen logs out the user and brings up the login screen again.
 void mainscreen::on_quitButton_clicked()
 {
-    login l;
-    l.show();
     this->close();
-    QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
+
+    //this code creates a new instance of login window, but closing that new window does not end the application, so causes a memory leak. disabled for now.
+//    login *l = new login(this);
+//    l->show(); //show the login window
+
+    //this code does not bring up a login window but at least it exits the application
+
+    login l;
+    l.show(); //show the login window
+
 
 }
 
@@ -53,7 +61,7 @@ void mainscreen::on_maintainBooksButton_clicked()
 //open the browse catalogue window
 void mainscreen::on_browseCatalogueButton_clicked()
 {
-    browse *b = new browse(this);
+    browse *b = new browse("browse", this);
     b->show();
 }
 
