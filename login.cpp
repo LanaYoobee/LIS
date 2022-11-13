@@ -92,7 +92,7 @@ void login::on_pushButton_clicked()
 //    QString salt = QtBCrypt::generateSalt();
 //    QString hashedPassword = QtBCrypt::hashPassword("sillyPassword", salt);
 
-//    qry.prepare("INSERT INTO users(ID, username, password, salt, first_name, surname, phone, admin) VALUES(1,'newUser',:password,:salt,'Admin','secondAdmin',1232132,'Y');");
+//    qry.prepare("INSERT INTO users(ID, username, password, first_name, surname, phone, admin) VALUES(1,'newUser',:password,:salt,'Admin','secondAdmin',1232132,'Y');");
 //    qry.bindValue(":password", hashedPassword);
 //    qry.bindValue(":salt", salt);
 //    qry.exec();

@@ -14,4 +14,5 @@ db_connect::db_connect(QObject *parent)
     {
         qDebug()<<"problem opening database";
     }
+
 }

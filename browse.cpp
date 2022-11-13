@@ -15,6 +15,7 @@ if (callType == "search")
 }
 else if (callType == "browse")
 {
+    this->show();
     randomBooks();
 }
 }
@@ -35,51 +36,43 @@ void browse::on_quitButton_clicked()
 
 void browse::randomBooks()
 {
-db_connect db;
+    db_connect db;
 
-        ui->welcomeLabel->setText("Random selection of books");
+    ui->welcomeLabel->setText("Random selection of books");
 
-        displayBooks();
+    displayBooks();
 
     QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
 
 }
 
 void browse::displayBooks()
+
 {
-    for(int i=0; i<10; i++)
+    QSqlQuery qry;
+
+    //prepare the query. select 30 books at random.
+    qry.prepare("select title, image_small, image_large from books order by random() limit 30");
+    qry.exec();
+
+
+    QString title, image_small, image_large;
+    QImage img_thumb, img_full;
+
+    for(int i=1; i<=30; i++)
     {
-        for (int j =0; j<3; j++)
+        for (int j =1; j<=3; j++)
         {
-            //set up variables needed for authentication
-            QSqlQuery qry;
-            QString title, image_small, image_large;
 
-            //prepare the query. select 1 book at random.
-
-            qry.prepare("select title, image_small, image_large from books order by random() limit 1");
-            qry.exec();
-
-            if(qry.next())
+           if(qry.next())
             {
                 title = qry.value(0).toString(); //title of the book from the db
                 image_small = qry.value(1).toString(); //the URl from the db
-                image_large = qry.value(1).toString(); //the URl from the db
+                image_large = qry.value(2).toString(); //the URl from the db
             }
 
-            QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
-
-            QNetworkRequest request(image_small);
-
-            QNetworkReply *reply = networkAccessManager->get(request);
-
-            QEventLoop loop;
-            connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
-            loop.exec();
-
-            QByteArray bytes = reply->readAll();
-            QImage img(64, 64, QImage::Format_RGB32);
-            img.loadFromData(bytes);
+           img_thumb = imageFromUrl(image_small);
+           img_full = imageFromUrl(image_large);
 
             QPushButton *bookButton = new QPushButton(this);
             QLabel *bookLabel = new QLabel();
@@ -87,23 +80,51 @@ void browse::displayBooks()
             bookButton->setMinimumSize(64,64);
             bookButton->setMaximumSize(64,64);
             bookButton->setIconSize(QSize(64,64));
-            QIcon buttonIcon(QPixmap::fromImage(img));
+            QIcon buttonIcon(QPixmap::fromImage(img_thumb));
             bookButton->setIcon(buttonIcon);
 
             bookLabel->setWordWrap(1);
             bookLabel->setText(title);
 
+          //  QVBoxLayout *verticalBox = new QVBoxLayout(this);
+
+//            verticalBox->addWidget(bookButton);
+//            verticalBox->addWidget(bookLabel);
+
+//            ui->gridLayout->addLayout(verticalBox, j, i);
+
             ui->gridLayout->addWidget(bookButton, j, i);
-//            ui->gridLayout->addWidget(bookLabel, j+1, i);
-            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img, title);});
+//            ui->gridLayout->addWidget(bookLabel, j, i);
+
+            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
         }
     }
 }
 
-void browse::showBookDetails(QImage img, QString title)
-{//img, title,
-
-    BookDetails *bd = new BookDetails(img, title, this); //pass their first name and the admin status to the main screen window
-    bd->show(); //show the main screen window
+//open the screen with details of one book
+void browse::showBookDetails(QImage img_full, QString title)
+{
+    BookDetails *bd = new BookDetails(img_full, title, this); //pass thef full image and the title to the other screen
+    bd->show(); //show the details of the book window
 }
 
+
+//reusable class for getting the images from URLs stored in the database
+QImage browse::imageFromUrl(QString url)
+{
+    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
+
+    QNetworkRequest request(url);
+
+    QNetworkReply *reply = networkAccessManager->get(request);
+
+    QEventLoop loop;
+    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
+    loop.exec();
+
+    QByteArray bytes = reply->readAll();
+    QImage img(64, 64, QImage::Format_RGB32);
+    img.loadFromData(bytes);
+
+    return img;
+}

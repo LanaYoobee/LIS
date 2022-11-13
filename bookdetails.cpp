@@ -8,7 +8,7 @@ BookDetails::BookDetails(QImage img, QString title, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->bookImage->setPixmap(QPixmap::fromImage(img));
+    ui->bookImage->setPixmap(QPixmap::fromImage(img).scaledToHeight(268));
     ui->titleEdit->setText(title);
 }
 

@@ -28,6 +28,8 @@ private slots:
     //QImage img, QString title
     void showBookDetails(QImage img, QString title);
 
+    QImage imageFromUrl(QString url);
+
 private:
     Ui::browse *ui;
 };

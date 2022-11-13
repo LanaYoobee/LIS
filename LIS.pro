@@ -14,7 +14,6 @@ SOURCES += \
     bookdetails.cpp \
     browse.cpp \
     db_connect.cpp \
-    imagefromurl.cpp \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -27,7 +26,6 @@ HEADERS += \
     bookdetails.h \
     browse.h \
     db_connect.h \
-    imagefromurl.h \
     login.h \
     mainscreen.h \
     openwall_crypt/crypt.h \

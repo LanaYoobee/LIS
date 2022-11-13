@@ -13,7 +13,7 @@ class BookDetails : public QDialog
 
     //QImage img, QString title,
 public:
-    explicit BookDetails(QImage img, QString title, QWidget *parent = nullptr);
+    explicit BookDetails(QImage, QString, QWidget *parent = nullptr);
     ~BookDetails();
 
 private slots:
