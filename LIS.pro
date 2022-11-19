@@ -17,10 +17,13 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
+    maintainusers.cpp \
     openwall_crypt/crypt_blowfish.c \
     openwall_crypt/crypt_gensalt.c \
     openwall_crypt/wrapper.c \
-    qtbcrypt.cpp
+    qtbcrypt.cpp \
+    searchbooks.cpp \
+    viewaccount.cpp
 
 HEADERS += \
     bookdetails.h \
@@ -28,18 +31,24 @@ HEADERS += \
     db_connect.h \
     login.h \
     mainscreen.h \
+    maintainusers.h \
     openwall_crypt/crypt.h \
     openwall_crypt/crypt_blowfish.h \
     openwall_crypt/crypt_gensalt.h \
     openwall_crypt/ow-crypt.h \
     openwall_crypt/x86.S \
-    qtbcrypt.h
+    qtbcrypt.h \
+    searchbooks.h \
+    viewaccount.h
 
 FORMS += \
     bookdetails.ui \
     browse.ui \
     login.ui \
-    mainscreen.ui
+    mainscreen.ui \
+    maintainusers.ui \
+    searchbooks.ui \
+    viewaccount.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>LIS</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/images/images/icons8-book-64.png</normaloff>:/images/images/icons8-book-64.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLabel" name="libraryImage">
     <property name="geometry">

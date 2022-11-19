@@ -12,7 +12,7 @@ class mainscreen : public QDialog
     Q_OBJECT
 
 public:
-    explicit mainscreen(QString user, int admin, QWidget *parent = nullptr);
+    explicit mainscreen(QString, int, QWidget *parent = nullptr);
     ~mainscreen();
 
 private slots:

@@ -22,7 +22,7 @@
     <rect>
      <x>80</x>
      <y>64</y>
-     <width>234</width>
+     <width>451</width>
      <height>34</height>
     </rect>
    </property>
@@ -77,12 +77,37 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="sizeConstraint">
-     <enum>QLayout::SetFixedSize</enum>
+     <enum>QLayout::SetDefaultConstraint</enum>
     </property>
     <property name="spacing">
      <number>4</number>
     </property>
    </layout>
+  </widget>
+  <widget class="QLabel" name="welcomeLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>100</y>
+     <width>711</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Not all books have images, click on any button to display more details about the book</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
   </widget>
  </widget>
  <resources>

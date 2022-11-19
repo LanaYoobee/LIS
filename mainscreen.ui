@@ -29,7 +29,7 @@
    <property name="font">
     <font>
      <family>Inter</family>
-     <pointsize>12</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="text">
@@ -94,7 +94,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <family>Inter</family>
+     <pointsize>17</pointsize>
     </font>
    </property>
    <property name="text">
@@ -141,7 +142,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <family>Inter</family>
+     <pointsize>17</pointsize>
     </font>
    </property>
    <property name="text">
@@ -234,7 +236,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <family>Inter</family>
+     <pointsize>17</pointsize>
     </font>
    </property>
    <property name="text">
@@ -258,7 +261,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <family>Inter</family>
+     <pointsize>17</pointsize>
     </font>
    </property>
    <property name="text">
@@ -282,7 +286,8 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <family>Inter</family>
+     <pointsize>17</pointsize>
     </font>
    </property>
    <property name="text">
