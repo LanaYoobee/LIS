@@ -2,7 +2,7 @@
 #include "ui_bookdetails.h"
 
 //QImage img, QString title,
-BookDetails::BookDetails(QImage img, QString title, QWidget *parent) :
+BookDetails::BookDetails(QImage img, QString title, QString author, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::BookDetails)
 {
@@ -11,6 +11,8 @@ BookDetails::BookDetails(QImage img, QString title, QWidget *parent) :
     ui->bookImage->setPixmap(QPixmap::fromImage(img).scaledToHeight(268));
     ui->titleEdit->setText(title);
     ui->titleEdit->home(1);
+    ui->authorEdit->setText(author);
+    ui->authorEdit->home(1);
 }
 
 BookDetails::~BookDetails()

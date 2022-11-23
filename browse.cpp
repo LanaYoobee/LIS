@@ -8,13 +8,13 @@ browse::browse(QString callType, QString search, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    if (callType == "search")
+    if (callType == "searchTitle")
     {
         this->show();
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
-        qry.prepare("select title, image_small, image_large from books where title like :title order by random()");
+        qry.prepare("select title, image_small, image_large, author from books where title like :title order by random()");
         qry.bindValue(":title", search);
 
         //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
@@ -32,7 +32,33 @@ browse::browse(QString callType, QString search, QWidget *parent) :
         displayBooks(std::move(qry), qryCount);
     }
 
-    else if (callType == "browse")
+    else
+    if (callType == "searchAuthor")
+    {
+        this->show();
+        //prepare the query.
+        QSqlQuery qry, qryCounter;
+        int qryCount;
+        qry.prepare("select title, image_small, image_large, author from books where author like :author order by random()");
+        qry.bindValue(":author", search);
+
+        //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
+        //we need the count query to control the loop of buttons in displayBooks
+
+        qryCounter.prepare("select count(*) from books where author like :author");
+        qryCounter.bindValue(":author", search);
+        qryCounter.exec();
+
+        if(qryCounter.next())
+        {
+            qryCount = qryCounter.value(0).toInt();
+        }
+        qry.exec();
+        displayBooks(std::move(qry), qryCount);
+    }
+
+    else
+    if (callType == "browse")
     {
         this->show(); //we show the screen first because sqlite query is slow and otherwise the user may think nothing is happening if the screen does not come up when query is executing
         ui->welcomeLabel->hide();
@@ -40,7 +66,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
         //prepare the query. select 30 books at random.
          db_connect();
         QSqlQuery qry;
-        qry.prepare("select title, image_small, image_large from books order by random() limit 30");
+        qry.prepare("select title, image_small, image_large, author from books order by random() limit 30");
         qry.exec();
         displayBooks(std::move(qry), 30);
         QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
@@ -66,7 +92,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
 {
     ui->welcomeLabel_3->hide();
 
-    QString title, image_small, image_large;
+    QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
 
     //if there are 10 or fewer books, show one row
@@ -81,6 +107,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 title = qry.value(0).toString(); //title of the book from the db
                 image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                 image_large = qry.value(2).toString(); //the URl of the large image from the db
+                author = qry.value(3).toString(); //author of the book from the db
             }
 
             img_thumb = imageFromUrl(image_small);
@@ -112,7 +139,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
             //            ui->gridLayout->addWidget(bookLabel, j, i);
 
             //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author);});
 
         }
     }
@@ -135,6 +162,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         title = qry.value(0).toString(); //title of the book from the db
                         image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
+                        author = qry.value(3).toString(); //author of the book from the db
                     }
 
                     img_thumb = imageFromUrl(image_small);
@@ -166,7 +194,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author);});
 
                 }
             }
@@ -179,6 +207,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     title = qry.value(0).toString(); //title of the book from the db
                     image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                     image_large = qry.value(2).toString(); //the URl of the large image from the db
+                    author = qry.value(3).toString(); //author of the book from the db
                 }
 
                 img_thumb = imageFromUrl(image_small);
@@ -213,7 +242,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author);});
             }
         }
 
@@ -234,6 +263,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         title = qry.value(0).toString(); //title of the book from the db
                         image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
+                        author = qry.value(3).toString(); //author of the book from the db
                     }
 
                     img_thumb = imageFromUrl(image_small);
@@ -265,7 +295,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author);});
 
                 }
             }
@@ -274,9 +304,9 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 
 //open the screen with details of one book
-void browse::showBookDetails(QImage img_full, QString title)
+void browse::showBookDetails(QImage img_full, QString title, QString author)
 {
-    BookDetails *bd = new BookDetails(img_full, title, this); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(img_full, title, author, this); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
 

@@ -24,7 +24,7 @@ private slots:
 
     void displayBooks(QSqlQuery, int);
 
-    void showBookDetails(QImage, QString);
+    void showBookDetails(QImage, QString, QString);
 
     QImage imageFromUrl(QString);
 
