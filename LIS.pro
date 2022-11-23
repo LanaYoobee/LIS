@@ -13,6 +13,7 @@ QT += network
 SOURCES += \
     bookdetails.cpp \
     browse.cpp \
+    createaccount.cpp \
     db_connect.cpp \
     login.cpp \
     main.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 HEADERS += \
     bookdetails.h \
     browse.h \
+    createaccount.h \
     db_connect.h \
     login.h \
     mainscreen.h \
@@ -44,6 +46,7 @@ HEADERS += \
 FORMS += \
     bookdetails.ui \
     browse.ui \
+    createaccount.ui \
     login.ui \
     mainscreen.ui \
     maintainusers.ui \

@@ -1,5 +1,6 @@
 #include "maintainusers.h"
 #include "ui_maintainusers.h"
+#include "createaccount.h"
 
 MaintainUsers::MaintainUsers(QWidget *parent) :
     QDialog(parent),
@@ -21,7 +22,8 @@ void MaintainUsers::on_quitButton_clicked()
 
 void MaintainUsers::on_addUserButton_clicked()
 {
-
+    CreateAccount *ca = new CreateAccount(this);
+    ca->show();
 }
 
 

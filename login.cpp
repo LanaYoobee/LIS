@@ -31,7 +31,7 @@ void login::on_passwordEntry_returnPressed()
     enteredUser = ui->usernameEntry->text();
     enteredPassword = ui->passwordEntry->text();
 
-    ui->centralwidget->releaseKeyboard();
+    //ui->centralwidget->releaseKeyboard();
     //prepare the query. bindValue is used to guard against sql injections
 
     qry.prepare("select username, password, admin, first_name from users where username= :username");

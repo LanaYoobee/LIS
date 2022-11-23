@@ -8,6 +8,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->welcomeLabel_3->hide();
     if (callType == "searchTitle")
     {
         this->show();
@@ -62,6 +63,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
     {
         this->show(); //we show the screen first because sqlite query is slow and otherwise the user may think nothing is happening if the screen does not come up when query is executing
         ui->welcomeLabel->hide();
+        ui->welcomeLabel_3->show();
         ui->welcomeLabel_3->setText("Random selection of 30 books");
         //prepare the query. select 30 books at random.
          db_connect();
@@ -90,7 +92,7 @@ void browse::on_quitButton_clicked()
 void browse::displayBooks(QSqlQuery qry, int size)
 
 {
-    ui->welcomeLabel_3->hide();
+
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
