@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include "db_connect.h"
+#include "db_close.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class login; }

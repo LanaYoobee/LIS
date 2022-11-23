@@ -228,38 +228,5 @@
  <resources>
   <include location="resources.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>titleSearchLineEdit</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchTitleButton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>457</x>
-     <y>206</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>769</x>
-     <y>213</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>authorSearchLineEdit</sender>
-   <signal>returnPressed()</signal>
-   <receiver>searchAuthorButton</receiver>
-   <slot>animateClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>646</x>
-     <y>296</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>777</x>
-     <y>311</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

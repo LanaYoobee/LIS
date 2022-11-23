@@ -39,10 +39,10 @@ void mainscreen::on_quitButton_clicked()
     //    login *l = new login(this);
     //    l->show(); //show the login window
 
-    //this code does not bring up a login window but at least it exits the application
+    //this code does not bring up a login window but at least it exits the application. without it, the application keeps running in the background.
 
     login l;
-    l.show(); //show the login window
+    l.show();
 
 
 }
@@ -55,10 +55,11 @@ void mainscreen::on_maintainUsersButton_clicked()
     mu->show();
 }
 
-
+//same functionality as searching for a book as we have to find a book before we can maintain it
 void mainscreen::on_maintainBooksButton_clicked()
 {
-
+    SearchBooks *sb = new SearchBooks(this);
+    sb->show();
 }
 
 

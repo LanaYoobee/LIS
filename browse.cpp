@@ -11,7 +11,6 @@ browse::browse(QString callType, QString search, QWidget *parent) :
     if (callType == "search")
     {
         this->show();
-        db_connect();
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
@@ -31,20 +30,20 @@ browse::browse(QString callType, QString search, QWidget *parent) :
         }
         qry.exec();
         displayBooks(std::move(qry), qryCount);
-        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
     }
+
     else if (callType == "browse")
     {
         this->show(); //we show the screen first because sqlite query is slow and otherwise the user may think nothing is happening if the screen does not come up when query is executing
-        db_connect();
-        ui->welcomeLabel->setText("Random selection of 30 books");
+        ui->welcomeLabel->hide();
+        ui->welcomeLabel_3->setText("Random selection of 30 books");
         //prepare the query. select 30 books at random.
+         db_connect();
         QSqlQuery qry;
         qry.prepare("select title, image_small, image_large from books order by random() limit 30");
         qry.exec();
         displayBooks(std::move(qry), 30);
         QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
-
     }
 }
 
@@ -64,14 +63,17 @@ void browse::on_quitButton_clicked()
 //reusable class to display books from a given query
 void browse::displayBooks(QSqlQuery qry, int size)
 
-{      
-    qDebug() << size;
+{
+    ui->welcomeLabel_3->hide();
 
     QString title, image_small, image_large;
     QImage img_thumb, img_full;
 
+    //if there are 10 or fewer books, show one row
+
     if (size<=10)
     {
+        ui->welcomeLabel->setText("There were "+QString("%1").arg(size)+" books found.");
         for(int i=1; i<=size; i++)
         {
             if(qry.next())
@@ -111,21 +113,22 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
             //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
             connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+
         }
     }
     else
-
         //if there are 11-29 results then we want to show them in blocks of 10
-
-        //TODO - want 15 to be shown not 10 when there are 15 results. Want 26 to be shown when there are 26, not 20.
 
         if (size>10 && size<30){
 
+            int divide = size / 10;
+            int remainder = size % 10;
+
+             ui->welcomeLabel->setText("There were "+QString("%1").arg(size)+" books found.");
             for(int i=1; i<=10; i++)
             {
-                for (int j =1; j<=int(size/10); j++)
+                for (int j =1; j<=divide; j++)
                 {
-
                     //sqlite query is very slow
                     if(qry.next())
                     {
@@ -159,18 +162,67 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
                     //            ui->gridLayout->addLayout(verticalBox, j, i);
 
-                    ui->gridLayout->addWidget(bookButton, i, j);
+                    ui->gridLayout->addWidget(bookButton, j, i);
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
                     connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+
                 }
+            }
+
+            //remainder of buttons if the number of results is not divisible by 10
+
+            for(int i = 1; i <= remainder; i++) {
+                if(qry.next())
+                {
+                    title = qry.value(0).toString(); //title of the book from the db
+                    image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
+                    image_large = qry.value(2).toString(); //the URl of the large image from the db
+                }
+
+                img_thumb = imageFromUrl(image_small);
+                img_full = imageFromUrl(image_large);
+
+                QPushButton *bookButton = new QPushButton(this);
+                //            QLabel *bookLabel = new QLabel();
+
+                bookButton->setMinimumSize(64,64);
+                bookButton->setMaximumSize(64,64);
+                bookButton->setIconSize(QSize(64,64));
+                QIcon buttonIcon(QPixmap::fromImage(img_thumb));
+                bookButton->setIcon(buttonIcon);
+
+                //TODO wanted to show labels as well but they don't line up properly, think need a combination of vertical box and gridlayout but can't figure it out
+
+
+                //            bookLabel->setWordWrap(1);
+                //            bookLabel->setText(title);
+
+                //            QVBoxLayout *verticalBox = new QVBoxLayout(this);
+
+                //            verticalBox->addWidget(bookButton);
+                //            verticalBox->addWidget(bookLabel);
+
+                //            ui->gridLayout->addLayout(verticalBox, j, i);
+
+
+                int j = (divide == 2) ? 3 : 2;
+
+                ui->gridLayout->addWidget(bookButton, j, i);
+                //            ui->gridLayout->addWidget(bookLabel, j, i);
+
+                //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
             }
         }
 
         else
         {
             //if there 30 or more results, we show only 30
+
+
+             ui->welcomeLabel->setText("There were "+QString("%1").arg(size)+" books found. Displaying random 30.");
             for(int i=1; i<=10; i++)
             {
                 for (int j =1; j<=3; j++)
@@ -209,11 +261,12 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
                     //            ui->gridLayout->addLayout(verticalBox, j, i);
 
-                    ui->gridLayout->addWidget(bookButton, i, j);
+                    ui->gridLayout->addWidget(bookButton, j, i);
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
                     connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title);});
+
                 }
             }
         }
