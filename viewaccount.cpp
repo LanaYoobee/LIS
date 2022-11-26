@@ -1,14 +1,14 @@
 #include "viewaccount.h"
 #include "ui_viewaccount.h"
 
-ViewAccount::ViewAccount(int admin, QWidget *parent) :
+ViewAccount::ViewAccount(QString user, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ViewAccount)
 {
     ui->setupUi(this);
 
     //if the user is not an admin, hide admin function buttons
-    if (admin == 0)
+    if (user == "a")
     {
         ui->deleteUserButton->hide();
         ui->deleteUserLabel->hide();

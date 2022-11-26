@@ -2,6 +2,7 @@
 #define MAINSCREEN_H
 
 #include <QDialog>
+#include "login.h"
 
 namespace Ui {
 class mainscreen;
@@ -12,8 +13,12 @@ class mainscreen : public QDialog
     Q_OBJECT
 
 public:
+
     explicit mainscreen(QString, int, QWidget *parent = nullptr);
     ~mainscreen();
+
+    int admin;
+    QString user;
 
 private slots:
     void on_quitButton_clicked();

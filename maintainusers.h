@@ -2,6 +2,7 @@
 #define MAINTAINUSERS_H
 
 #include <QDialog>
+#include "login.h"
 
 namespace Ui {
 class MaintainUsers;

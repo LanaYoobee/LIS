@@ -1,6 +1,5 @@
 #include "createaccount.h"
 #include "ui_createaccount.h"
-#include "login.h"
 #include "qtbcrypt.h"
 
 CreateAccount::CreateAccount(QWidget *parent) :
@@ -24,8 +23,6 @@ void CreateAccount::on_quitButton_clicked()
 
 void CreateAccount::on_saveAccountButton_clicked()
 {
-    db_connect();
-
     QString username, password, name, surname;
     int phone, admin;
 

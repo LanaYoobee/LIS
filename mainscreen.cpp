@@ -1,10 +1,9 @@
 #include "mainscreen.h"
 #include "ui_mainscreen.h"
-#include "login.h"
 #include "browse.h"
-#include "db_connect.h"
 #include "maintainusers.h"
 #include "searchbooks.h"
+#include "viewaccount.h"
 
 mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
     QDialog(parent),
@@ -22,7 +21,11 @@ mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
         ui->maintainBooksButton->hide();
         ui->maintainBooksLabel->hide();
     }
+
+   this->admin = admin;
+   this->user = user;
 }
+
 
 mainscreen::~mainscreen()
 {
@@ -43,8 +46,6 @@ void mainscreen::on_quitButton_clicked()
 
     login l;
     l.show();
-
-
 }
 
 
@@ -80,6 +81,7 @@ void mainscreen::on_searchBookButton_clicked()
 
 void mainscreen::on_viewOwnAccountButton_clicked()
 {
-
+    ViewAccount *va = new ViewAccount(user, this);
+    va->show();
 }
 

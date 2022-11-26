@@ -172,6 +172,11 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>userSearch</tabstop>
+  <tabstop>addUserButton</tabstop>
+  <tabstop>quitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

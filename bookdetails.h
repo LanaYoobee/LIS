@@ -2,6 +2,7 @@
 #define BOOKDETAILS_H
 
 #include <QDialog>
+#include "login.h"
 
 namespace Ui {
 class BookDetails;

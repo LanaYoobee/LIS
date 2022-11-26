@@ -10,6 +10,9 @@ login::login(QWidget *parent)
 
 {
     ui->setupUi(this);
+
+
+
 }
 
 login::~login()
@@ -20,7 +23,6 @@ login::~login()
 //user authentication into the application
 void login::on_passwordEntry_returnPressed()
 {
-    db_connect();
 
     //set up variables needed for authentication
     QSqlQuery qry;
@@ -60,47 +62,10 @@ void login::on_passwordEntry_returnPressed()
 
             mainscreen *ms = new mainscreen(user, admin, this); //pass their first name and the admin status to the main screen window
             ms->show(); //show the main screen window
-
-
-
         }
         else QMessageBox::critical(this, "LIS", "Incorrect username or password");
     }
 
-    QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
-
 }
 
-
-
-//function for creating new users, to be moved to an admin screen later
-void login::on_pushButton_clicked()
-
-{
-
-    //    QSqlDatabase db;
-    //    db = QSqlDatabase::addDatabase("QSQLITE");
-    //    db.setDatabaseName("../LIS/db.sqlite");
-
-    //    if(!db.open())
-    //    {
-    //        qDebug()<<"problem opening database";
-    //    }
-
-    //    QSqlQuery qry;
-    //    QString salt = QtBCrypt::generateSalt();
-    //    QString hashedPassword = QtBCrypt::hashPassword("sillyPassword", salt);
-
-    //    qry.prepare("INSERT INTO users(ID, username, password, first_name, surname, phone, admin) VALUES(1,'newUser',:password,:salt,'Admin','secondAdmin',1232132,'Y');");
-    //    qry.bindValue(":password", hashedPassword);
-    //    qry.bindValue(":salt", salt);
-    //    qry.exec();
-
-}
-
-
-void login::on_login_destroyed()
-{
-    QApplication::closeAllWindows();
-}
 

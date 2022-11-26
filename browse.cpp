@@ -12,6 +12,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
     if (callType == "searchTitle")
     {
         this->show();
+
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
@@ -37,6 +38,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
     if (callType == "searchAuthor")
     {
         this->show();
+
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
@@ -65,13 +67,12 @@ browse::browse(QString callType, QString search, QWidget *parent) :
         ui->welcomeLabel->hide();
         ui->welcomeLabel_3->show();
         ui->welcomeLabel_3->setText("Random selection of 30 books");
+
         //prepare the query. select 30 books at random.
-         db_connect();
         QSqlQuery qry;
         qry.prepare("select title, image_small, image_large, author from books order by random() limit 30");
         qry.exec();
         displayBooks(std::move(qry), 30);
-        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
     }
 }
 

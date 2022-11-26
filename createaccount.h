@@ -2,6 +2,7 @@
 #define CREATEACCOUNT_H
 
 #include <QMainWindow>
+#include "login.h"
 
 namespace Ui {
 class CreateAccount;

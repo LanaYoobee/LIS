@@ -2,6 +2,7 @@
 #define VIEWACCOUNT_H
 
 #include <QDialog>
+#include "login.h"
 
 namespace Ui {
 class ViewAccount;
@@ -12,7 +13,7 @@ class ViewAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit ViewAccount(int, QWidget *parent = nullptr);
+    explicit ViewAccount(QString, QWidget *parent = nullptr);
     ~ViewAccount();
 
 private slots:

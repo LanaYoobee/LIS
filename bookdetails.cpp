@@ -10,9 +10,9 @@ BookDetails::BookDetails(QImage img, QString title, QString author, QWidget *par
 
     ui->bookImage->setPixmap(QPixmap::fromImage(img).scaledToHeight(268));
     ui->titleEdit->setText(title);
-    ui->titleEdit->home(1);
+    ui->titleEdit->home(1); //display the cursor at the start of the line
     ui->authorEdit->setText(author);
-    ui->authorEdit->home(1);
+    ui->authorEdit->home(1); //display the cursor at the start of the line
 }
 
 BookDetails::~BookDetails()

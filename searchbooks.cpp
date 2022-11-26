@@ -22,7 +22,6 @@ void SearchBooks::on_quitButton_clicked()
 
 void SearchBooks::on_searchTitleButton_clicked()
 {
-    db_connect();
 
     QString enteredTitle;
 
@@ -32,13 +31,11 @@ void SearchBooks::on_searchTitleButton_clicked()
     browse *b = new browse("searchTitle", enteredTitle, this);
     b->show();
 
-    QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
 }
 
 
 void SearchBooks::on_searchAuthorButton_clicked()
 {
-    db_connect();
 
     QString enteredAuthor;
 
@@ -48,6 +45,5 @@ void SearchBooks::on_searchAuthorButton_clicked()
     browse *b = new browse("searchAuthor", enteredAuthor, this);
     b->show();
 
-    QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
 }
 

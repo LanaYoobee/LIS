@@ -14,7 +14,6 @@ SOURCES += \
     bookdetails.cpp \
     browse.cpp \
     createaccount.cpp \
-    db_connect.cpp \
     login.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     bookdetails.h \
     browse.h \
     createaccount.h \
-    db_connect.h \
     login.h \
     mainscreen.h \
     maintainusers.h \

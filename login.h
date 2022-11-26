@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QMessageBox>
-#include "db_connect.h"
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class login; }
@@ -22,10 +22,6 @@ public:
 
 private slots:
     void on_passwordEntry_returnPressed();
-
-    void on_pushButton_clicked();
-
-    void on_login_destroyed();
 
 private:
     Ui::login *ui;
