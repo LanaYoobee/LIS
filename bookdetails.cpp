@@ -15,6 +15,7 @@ BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_da
     ui->authorEdit->home(1); //display the cursor at the start of the line
     ui->dateEdit->setDate(due_date);
 
+    //if the book is available, we can borrow it, otherwise we can only reserve it
     if (due_date > QDate::currentDate())
     {
         ui->borrowBookButton->hide();

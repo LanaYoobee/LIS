@@ -5,7 +5,7 @@
 #include "searchbooks.h"
 #include "viewaccount.h"
 
-mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
+mainscreen::mainscreen(QString user, int admin, int user_id, login *parent) :
     QDialog(parent),
     ui(new Ui::mainscreen)
 {
@@ -24,6 +24,8 @@ mainscreen::mainscreen(QString user, int admin, QWidget *parent) :
 
    this->admin = admin;
    this->user = user;
+   this->user_id = user_id;
+   this->parent = parent;
 }
 
 
@@ -33,25 +35,17 @@ mainscreen::~mainscreen()
 }
 
 
-//the back button on the main screen logs out the user and brings up the login screen again.
+//the back button brings up the login screen again.
 void mainscreen::on_quitButton_clicked()
 {
     this->close();
-
-    //TODO this code creates a new instance of login window, but closing that new window does not end the application, so causes a memory leak. disabled for now.
-    //    login *l = new login(this);
-    //    l->show(); //show the login window
-
-    //this code does not bring up a login window but at least it exits the application. without it, the application keeps running in the background.
-
-    login l;
-    l.show();
+    parent->show();
+    delete this;
 }
 
 
 void mainscreen::on_maintainUsersButton_clicked()
 {
-
     MaintainUsers *mu = new MaintainUsers(this);
     mu->show();
 }
@@ -81,7 +75,7 @@ void mainscreen::on_searchBookButton_clicked()
 
 void mainscreen::on_viewOwnAccountButton_clicked()
 {
-    ViewAccount *va = new ViewAccount(user, this);
+    ViewAccount *va = new ViewAccount(user_id, this);
     va->show();
 }
 

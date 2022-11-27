@@ -19,6 +19,8 @@ public:
     explicit browse(QString, QString, QWidget *parent = nullptr);
     ~browse();
 
+
+
 private slots:
     void on_quitButton_clicked();
 
@@ -27,6 +29,7 @@ private slots:
     void showBookDetails(QImage, QString, QString, QDate);
 
     QImage imageFromUrl(QString);
+
 
 private:
     Ui::browse *ui;

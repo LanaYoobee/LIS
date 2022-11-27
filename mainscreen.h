@@ -14,11 +14,13 @@ class mainscreen : public QDialog
 
 public:
 
-    explicit mainscreen(QString, int, QWidget *parent = nullptr);
+    explicit mainscreen(QString, int, int, login *parent = nullptr);
     ~mainscreen();
 
-    int admin;
-    QString user;
+    int admin, user_id;
+    QString user, username;
+
+    login *parent;
 
 private slots:
     void on_quitButton_clicked();

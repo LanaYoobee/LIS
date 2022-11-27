@@ -1,6 +1,7 @@
 #include "maintainusers.h"
 #include "ui_maintainusers.h"
 #include "createaccount.h"
+#include "viewaccount.h"
 
 MaintainUsers::MaintainUsers(QWidget *parent) :
     QDialog(parent),
@@ -29,7 +30,11 @@ void MaintainUsers::on_addUserButton_clicked()
 
 void MaintainUsers::on_userSearch_returnPressed()
 {
+    int user_id = ui->userSearch->text().toInt();
 
+
+    ViewAccount *va = new ViewAccount(user_id, this);
+    va->show();
 
 }
 
