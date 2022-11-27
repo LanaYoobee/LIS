@@ -20,6 +20,8 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
+    QString user;
+
 private slots:
     void on_passwordEntry_returnPressed();
 

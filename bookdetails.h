@@ -14,11 +14,13 @@ class BookDetails : public QDialog
 
     //QImage img, QString title,
 public:
-    explicit BookDetails(QImage, QString, QString, QWidget *parent = nullptr);
+    explicit BookDetails(QImage, QString, QString, QDate, QWidget *parent = nullptr);
     ~BookDetails();
 
 private slots:
     void on_quitButton_clicked();
+
+    void on_borrowBookButton_clicked();
 
 private:
     Ui::BookDetails *ui;

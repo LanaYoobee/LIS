@@ -119,22 +119,6 @@
     </font>
    </property>
   </widget>
-  <widget class="QLineEdit" name="categoryEdit">
-   <property name="geometry">
-    <rect>
-     <x>512</x>
-     <y>342</y>
-     <width>340</width>
-     <height>39</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Inter</family>
-     <pointsize>19</pointsize>
-    </font>
-   </property>
-  </widget>
   <widget class="QDateEdit" name="dateEdit">
    <property name="geometry">
     <rect>
@@ -187,25 +171,6 @@
    </property>
    <property name="text">
     <string>Author</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="categoryLabel">
-   <property name="geometry">
-    <rect>
-     <x>318</x>
-     <y>347</y>
-     <width>194</width>
-     <height>29</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Inter</family>
-     <pointsize>19</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Category</string>
    </property>
   </widget>
   <widget class="QLabel" name="availableLabel">
