@@ -19,6 +19,8 @@ public:
     explicit ViewAccount(int, int, QWidget *parent = nullptr);
     ~ViewAccount();
 
+    int searchedUserID;
+
 private slots:
     void on_quitButton_clicked();
 
