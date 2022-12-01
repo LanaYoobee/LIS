@@ -83,9 +83,6 @@
      <pointsize>19</pointsize>
     </font>
    </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
    <property name="text">
     <string/>
    </property>
@@ -192,9 +189,6 @@
      <pointsize>19</pointsize>
     </font>
    </property>
-   <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
-   </property>
    <property name="text">
     <string/>
    </property>
@@ -294,8 +288,8 @@
   <widget class="QLabel" name="confirmLabel">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>240</y>
+     <x>230</x>
+     <y>250</y>
      <width>647</width>
      <height>151</height>
     </rect>
@@ -322,7 +316,45 @@
     <set>Qt::NoTextInteraction</set>
    </property>
   </widget>
+  <widget class="QLabel" name="confirmLabel_2">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>250</y>
+     <width>647</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(226, 190, 243)</string>
+   </property>
+   <property name="text">
+    <string>Phone Updated</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::NoTextInteraction</set>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>nameLineEdit</tabstop>
+  <tabstop>phoneLineEdit</tabstop>
+  <tabstop>deleteUserButton</tabstop>
+  <tabstop>saveAccountButton</tabstop>
+  <tabstop>quitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

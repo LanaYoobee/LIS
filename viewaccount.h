@@ -30,6 +30,8 @@ private slots:
 
     QImage imageFromUrl(QString);
 
+    void on_saveAccountButton_clicked();
+
 private:
     Ui::ViewAccount *ui;
 };

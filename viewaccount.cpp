@@ -11,6 +11,7 @@ ViewAccount::ViewAccount(int admin, int searchedUserID, QWidget *parent) :
     ui->setupUi(this);
 
     ui->confirmLabel->hide();
+    ui->confirmLabel_2->hide();
 
     this->searchedUserID = searchedUserID;
 
@@ -144,3 +145,22 @@ void ViewAccount::showBookDetails(QImage img_full, QString title, QString author
     BookDetails *bd = new BookDetails(img_full, title, author, due_date, this); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
+
+void ViewAccount::on_saveAccountButton_clicked()
+{
+    int updatedPhone;
+
+    updatedPhone = ui->phoneLineEdit->text().toInt();
+
+    QSqlQuery qry;
+    qry.prepare("update users set phone = :updatedPhone where id = :searchedUserID");
+    qry.bindValue(":searchedUserID", searchedUserID);
+    qry.bindValue(":updatedPhone", updatedPhone);
+    qry.exec();
+
+    if(qry.exec()) //check if there were any results for this username
+    {
+    ui->confirmLabel_2->show();
+    }
+}
+
