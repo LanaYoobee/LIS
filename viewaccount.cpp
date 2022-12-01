@@ -4,11 +4,18 @@
 #include "browse.h"
 #include "bookdetails.h"
 
-ViewAccount::ViewAccount(int user_id, QWidget *parent) :
+ViewAccount::ViewAccount(int admin, int searchedUserID, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ViewAccount)
 {
     ui->setupUi(this);
+
+    //we don't want non-admins deleting users and we don't want admin deleting itself
+    if (admin != 1 || searchedUserID == 1)
+    {
+        ui->deleteUserButton->hide();
+        ui->deleteUserLabel->hide();
+    }
 
     //if the user is not an admin, hide admin function buttons
 
@@ -22,7 +29,7 @@ ViewAccount::ViewAccount(int user_id, QWidget *parent) :
     //prepare the query.
     QSqlQuery qry;
     qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.id, books.id, due_date, date_returned from users left join borrowing on borrowing.user_id = users.ID left join books on borrowing.book_id = books.ID where users.id = :user_id order by random()");
-    qry.bindValue(":user_id", user_id);
+    qry.bindValue(":user_id", searchedUserID);
     qry.exec();
 
     QString title, image_small, image_large, author;
@@ -42,19 +49,12 @@ ViewAccount::ViewAccount(int user_id, QWidget *parent) :
 
     qry.exec();
 
+    //we only show five borrowed books
+
     for(int i=1; i<=5; i++)
     {
     if(qry.next())
     {
-
-//    title = qry.value(0).toString(); //title of the book from the db
-//    image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
-//    image_large = qry.value(2).toString(); //the URl of the large image from the db
-//    author = qry.value(3).toString(); //author of the book from the db
-//    due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
-//    date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
-
-
 
         title = qry.value(3).toString(); //title of the book from the db
         image_small = qry.value(4).toString(); //the URl of the thumbnail image from the db

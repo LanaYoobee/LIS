@@ -5,16 +5,16 @@
 #include "searchbooks.h"
 #include "viewaccount.h"
 
-mainscreen::mainscreen(QString user, int admin, int user_id, login *parent) :
+mainscreen::mainscreen(QString userFirstName, int admin, int loggedInUserID, login *parent) :
     QDialog(parent),
     ui(new Ui::mainscreen)
 {
     ui->setupUi(this);
 
-    ui->welcomeLabel->setText("Welcome, "+user+"!"); //greet the user with the first name we got from the db
+    ui->welcomeLabel->setText("Welcome, "+userFirstName+"!"); //greet the user with the first name we got from the db
 
     //if the user is not an admin, hide admin function buttons
-    if (admin == 0)
+    if (admin != 1)
     {
         ui->maintainUsersButton->hide();
         ui->maintainUsersLabel->hide();
@@ -22,9 +22,8 @@ mainscreen::mainscreen(QString user, int admin, int user_id, login *parent) :
         ui->maintainBooksLabel->hide();
     }
 
+   this->loggedInUserID = loggedInUserID;
    this->admin = admin;
-   this->user = user;
-   this->user_id = user_id;
    this->parent = parent;
 }
 
@@ -46,7 +45,7 @@ void mainscreen::on_quitButton_clicked()
 
 void mainscreen::on_maintainUsersButton_clicked()
 {
-    MaintainUsers *mu = new MaintainUsers(this);
+    MaintainUsers *mu = new MaintainUsers(admin, this);
     mu->show();
 }
 
@@ -75,7 +74,7 @@ void mainscreen::on_searchBookButton_clicked()
 
 void mainscreen::on_viewOwnAccountButton_clicked()
 {
-    ViewAccount *va = new ViewAccount(user_id, this);
+    ViewAccount *va = new ViewAccount(admin, loggedInUserID, this);
     va->show();
 }
 

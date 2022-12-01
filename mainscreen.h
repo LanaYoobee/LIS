@@ -17,8 +17,8 @@ public:
     explicit mainscreen(QString, int, int, login *parent = nullptr);
     ~mainscreen();
 
-    int admin, user_id;
-    QString user, username;
+    int admin, loggedInUserID;
+    QString userFirstName;
 
     login *parent;
 

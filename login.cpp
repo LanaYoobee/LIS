@@ -25,8 +25,8 @@ void login::on_passwordEntry_returnPressed()
 
     //set up variables needed for authentication
     QSqlQuery qry;
-    QString enteredUser, user, enteredPassword, storedPassword, storedSalt;
-    int admin, user_id;
+    QString enteredUser, userFirstName, enteredPassword, storedPassword, storedSalt;
+    int admin, loggedInUserID;
 
     //collect user input from the mainwindow
     enteredUser = ui->usernameEntry->text();
@@ -53,14 +53,15 @@ void login::on_passwordEntry_returnPressed()
         //if the hash of the entered password with our stored salt matches our stored hashed password, then it must be the same, so we can let the user in.
         if (hashedPassword == storedPassword)
         {
-            user_id = qry.value(4).toInt(); //we need the user_id for other functions
-            admin = qry.value(2).toInt(); //once we've let the user in, we need to know if they're an admin (value stored in the db)
-            user = qry.value(3).toString(); //we also need to know their name, so we can greet them
+            loggedInUserID = qry.value(4).toInt();
 
-            this->user_id = user_id;
+            admin = qry.value(2).toInt();
+
+            userFirstName = qry.value(3).toString(); //we also need to know their name, so we can greet them
+
             this->close(); //we can close the login window once we've let the user in
 
-            mainscreen *ms = new mainscreen(user, admin, user_id, this); //pass their first name and the admin status to the main screen window
+            mainscreen *ms = new mainscreen(userFirstName, admin, loggedInUserID, this); //pass their first name and the admin status to the main screen window
             ms->show(); //show the main screen window
         }
         else QMessageBox::critical(this, "LIS", "Incorrect username or password");

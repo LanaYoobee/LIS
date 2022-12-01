@@ -13,8 +13,10 @@ class MaintainUsers : public QDialog
     Q_OBJECT
 
 public:
-    explicit MaintainUsers(QWidget *parent = nullptr);
+    explicit MaintainUsers(int, QWidget *parent = nullptr);
     ~MaintainUsers();
+
+    int admin;
 
 private slots:
     void on_quitButton_clicked();

@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include "login.h"
+#include "browse.h"
+#include "bookdetails.h"
+#include "mainscreen.h"
 
 namespace Ui {
 class ViewAccount;
@@ -13,7 +16,7 @@ class ViewAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit ViewAccount(int, QWidget *parent = nullptr);
+    explicit ViewAccount(int, int, QWidget *parent = nullptr);
     ~ViewAccount();
 
 private slots:
