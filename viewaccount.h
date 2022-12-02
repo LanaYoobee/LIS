@@ -1,5 +1,7 @@
-#ifndef VIEWACCOUNT_H
-#define VIEWACCOUNT_H
+//#ifndef VIEWACCOUNT_H
+//#define VIEWACCOUNT_H
+
+#pragma once
 
 #include <QDialog>
 #include "login.h"
@@ -28,7 +30,7 @@ private slots:
 
     void showBookDetails(QImage, QString, QString, QDate);
 
-    QImage imageFromUrl(QString);
+//    QImage imageFromUrl(QString);
 
     void on_saveAccountButton_clicked();
 
@@ -36,4 +38,4 @@ private:
     Ui::ViewAccount *ui;
 };
 
-#endif // VIEWACCOUNT_H
+//#endif // VIEWACCOUNT_H

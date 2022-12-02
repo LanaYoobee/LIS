@@ -1,5 +1,6 @@
-#ifndef CREATEACCOUNT_H
-#define CREATEACCOUNT_H
+#pragma once
+//#ifndef CREATEACCOUNT_H
+//#define CREATEACCOUNT_H
 
 #include <QMainWindow>
 #include "login.h"
@@ -25,4 +26,4 @@ private:
     Ui::CreateAccount *ui;
 };
 
-#endif // CREATEACCOUNT_H
+//#endif // CREATEACCOUNT_H

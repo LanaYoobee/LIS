@@ -1,5 +1,8 @@
-#ifndef BOOKDETAILS_H
-#define BOOKDETAILS_H
+//#ifndef BOOKDETAILS_H
+
+//#define BOOKDETAILS_H
+
+#pragma once
 
 #include <QDialog>
 #include "login.h"
@@ -12,7 +15,6 @@ class BookDetails : public QDialog
 {
     Q_OBJECT
 
-    //QImage img, QString title,
 public:
     explicit BookDetails(QImage, QString, QString, QDate, QWidget *parent = nullptr);
     ~BookDetails();
@@ -22,8 +24,12 @@ private slots:
 
     void on_borrowBookButton_clicked();
 
+    void on_returnBookButton_clicked();
+
+    void on_reserveBookButton_clicked();
+
 private:
     Ui::BookDetails *ui;
 };
 
-#endif // BOOKDETAILS_H
+//#endif // BOOKDETAILS_H

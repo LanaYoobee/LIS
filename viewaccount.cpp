@@ -1,8 +1,6 @@
 #include "viewaccount.h"
 #include "ui_viewaccount.h"
-#include "login.h"
-#include "browse.h"
-#include "bookdetails.h"
+
 
 ViewAccount::ViewAccount(int admin, int searchedUserID, QWidget *parent) :
     QDialog(parent),
@@ -119,25 +117,25 @@ void ViewAccount::on_deleteUserButton_clicked()
     }
 }
 
-//reusable class for getting the images from URLs stored in the database
-QImage ViewAccount::imageFromUrl(QString url)
-{
-    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
+////reusable class for getting the images from URLs stored in the database
+//QImage ViewAccount::imageFromUrl(QString url)
+//{
+//    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
 
-    QNetworkRequest request(url);
+//    QNetworkRequest request(url);
 
-    QNetworkReply *reply = networkAccessManager->get(request);
+//    QNetworkReply *reply = networkAccessManager->get(request);
 
-    QEventLoop loop;
-    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
-    loop.exec();
+//    QEventLoop loop;
+//    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
+//    loop.exec();
 
-    QByteArray bytes = reply->readAll();
-    QImage img(64, 64, QImage::Format_RGB32);
-    img.loadFromData(bytes);
+//    QByteArray bytes = reply->readAll();
+//    QImage img(64, 64, QImage::Format_RGB32);
+//    img.loadFromData(bytes);
 
-    return img;
-}
+//    return img;
+//}
 
 //open the screen with details of one book
 void ViewAccount::showBookDetails(QImage img_full, QString title, QString author, QDate due_date)

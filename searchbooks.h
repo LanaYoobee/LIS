@@ -1,5 +1,7 @@
-#ifndef SEARCHBOOKS_H
-#define SEARCHBOOKS_H
+//#ifndef SEARCHBOOKS_H
+//#define SEARCHBOOKS_H
+
+#pragma once
 
 #include <QDialog>
 #include "login.h"
@@ -27,4 +29,4 @@ private:
     Ui::SearchBooks *ui;
 };
 
-#endif // SEARCHBOOKS_H
+//#endif // SEARCHBOOKS_H

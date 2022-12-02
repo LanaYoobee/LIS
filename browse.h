@@ -1,11 +1,11 @@
-#ifndef BROWSE_H
-#define BROWSE_H
+
+#pragma once
 
 #include <QDialog>
-#include <QNetworkAccessManager>
-#include <QNetworkReply>
+
 #include <QMessageBox>
 #include "login.h"
+#include "imagefromurl.h"
 
 namespace Ui {
 class browse;
@@ -28,11 +28,7 @@ private slots:
 
     void showBookDetails(QImage, QString, QString, QDate);
 
-    QImage imageFromUrl(QString);
-
-
 private:
     Ui::browse *ui;
 };
 
-#endif // BROWSE_H

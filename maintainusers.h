@@ -1,5 +1,7 @@
-#ifndef MAINTAINUSERS_H
-#define MAINTAINUSERS_H
+//#ifndef MAINTAINUSERS_H
+//#define MAINTAINUSERS_H
+
+#pragma once
 
 #include <QDialog>
 #include "login.h"
@@ -29,4 +31,4 @@ private:
     Ui::MaintainUsers *ui;
 };
 
-#endif // MAINTAINUSERS_H
+//#endif // MAINTAINUSERS_H

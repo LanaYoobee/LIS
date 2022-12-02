@@ -1,6 +1,7 @@
-#ifndef MAINSCREEN_H
-#define MAINSCREEN_H
+//#ifndef MAINSCREEN_H
+//#define MAINSCREEN_H
 
+#pragma once
 #include <QDialog>
 #include "login.h"
 
@@ -39,4 +40,4 @@ private:
     Ui::mainscreen *ui;
 };
 
-#endif // MAINSCREEN_H
+//#endif // MAINSCREEN_H

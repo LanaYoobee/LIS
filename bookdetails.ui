@@ -123,7 +123,7 @@
    <property name="geometry">
     <rect>
      <x>512</x>
-     <y>410</y>
+     <y>344</y>
      <width>340</width>
      <height>39</height>
     </rect>
@@ -177,7 +177,7 @@
    <property name="geometry">
     <rect>
      <x>318</x>
-     <y>416</y>
+     <y>350</y>
      <width>194</width>
      <height>29</height>
     </rect>
@@ -195,7 +195,7 @@
   <widget class="QPushButton" name="borrowBookButton">
    <property name="geometry">
     <rect>
-     <x>557</x>
+     <x>477</x>
      <y>478</y>
      <width>64</width>
      <height>64</height>
@@ -218,7 +218,7 @@
   <widget class="QLabel" name="borrowBookLabel">
    <property name="geometry">
     <rect>
-     <x>528</x>
+     <x>448</x>
      <y>542</y>
      <width>121</width>
      <height>29</height>
@@ -240,7 +240,7 @@
   <widget class="QPushButton" name="reserveBookButton">
    <property name="geometry">
     <rect>
-     <x>734</x>
+     <x>649</x>
      <y>478</y>
      <width>64</width>
      <height>64</height>
@@ -263,7 +263,7 @@
   <widget class="QLabel" name="reserveBookLabel">
    <property name="geometry">
     <rect>
-     <x>705</x>
+     <x>620</x>
      <y>542</y>
      <width>121</width>
      <height>29</height>
@@ -277,6 +277,51 @@
    </property>
    <property name="text">
     <string>Reserve</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="returnBookButton">
+   <property name="geometry">
+    <rect>
+     <x>820</x>
+     <y>478</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/images/icons8-edit-file-64.png</normaloff>:/images/images/icons8-edit-file-64.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="returnBookLabel">
+   <property name="geometry">
+    <rect>
+     <x>790</x>
+     <y>542</y>
+     <width>121</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Return</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

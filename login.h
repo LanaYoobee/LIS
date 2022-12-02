@@ -1,5 +1,7 @@
-#ifndef LOGIN_H
-#define LOGIN_H
+//#ifndef LOGIN_H
+//#define LOGIN_H
+
+#pragma once
 
 #include <QMainWindow>
 #include <QMessageBox>
@@ -29,4 +31,4 @@ private:
     Ui::login *ui;
 
 };
-#endif // LOGIN_H
+//#endif // LOGIN_H

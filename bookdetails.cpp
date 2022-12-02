@@ -74,3 +74,15 @@ void BookDetails::on_borrowBookButton_clicked()
 //    where title like '%silkie%' and username = 'admin'
 }
 
+
+void BookDetails::on_returnBookButton_clicked()
+{
+
+}
+
+
+void BookDetails::on_reserveBookButton_clicked()
+{
+
+}
+

@@ -338,21 +338,21 @@ void browse::showBookDetails(QImage img_full, QString title, QString author, QDa
 
 
 //reusable class for getting the images from URLs stored in the database
-QImage browse::imageFromUrl(QString url)
-{
-    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
+//QImage browse::imageFromUrl(QString url)
+//{
+//    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
 
-    QNetworkRequest request(url);
+//    QNetworkRequest request(url);
 
-    QNetworkReply *reply = networkAccessManager->get(request);
+//    QNetworkReply *reply = networkAccessManager->get(request);
 
-    QEventLoop loop;
-    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
-    loop.exec();
+//    QEventLoop loop;
+//    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
+//    loop.exec();
 
-    QByteArray bytes = reply->readAll();
-    QImage img(64, 64, QImage::Format_RGB32);
-    img.loadFromData(bytes);
+//    QByteArray bytes = reply->readAll();
+//    QImage img(64, 64, QImage::Format_RGB32);
+//    img.loadFromData(bytes);
 
-    return img;
-}
+//    return img;
+//}
