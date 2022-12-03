@@ -2,11 +2,13 @@
 #include "ui_viewaccount.h"
 
 
-ViewAccount::ViewAccount(int admin, QString searchedUsername, QWidget *parent) :
+ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
     QDialog(parent),
     ui(new Ui::ViewAccount)
 {
     ui->setupUi(this);
+
+    this->parent = parent;
 
     ui->confirmLabel->hide();
     ui->confirmLabel_2->hide();
@@ -122,7 +124,7 @@ void ViewAccount::on_deleteUserButton_clicked()
 //open the screen with details of one book
 void ViewAccount::showBookDetails(QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
 {
-    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, this); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
 

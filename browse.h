@@ -16,10 +16,10 @@ class browse : public QDialog
     Q_OBJECT
 
 public:
-    explicit browse(QString, QString, QWidget *parent = nullptr);
+    explicit browse(QString, QString, login *parent = nullptr);
     ~browse();
 
-
+    login *parent;
 
 private slots:
     void on_quitButton_clicked();

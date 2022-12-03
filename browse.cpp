@@ -2,13 +2,13 @@
 #include "ui_browse.h"
 #include "bookdetails.h"
 
-browse::browse(QString callType, QString search, QWidget *parent) :
+browse::browse(QString callType, QString search, login *parent) :
     QDialog(parent),
     ui(new Ui::browse)
 {
     ui->setupUi(this);
 
-
+this->parent = parent;
 
     ui->welcomeLabel_3->hide();
     if (callType == "searchTitle")
@@ -339,6 +339,6 @@ void browse::displayBooks(QSqlQuery qry, int size)
 //open the screen with details of one book
 void browse::showBookDetails(QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
 {
-    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, this); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }

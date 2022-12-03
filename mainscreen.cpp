@@ -45,14 +45,14 @@ void mainscreen::on_quitButton_clicked()
 
 void mainscreen::on_maintainUsersButton_clicked()
 {
-    MaintainUsers *mu = new MaintainUsers(admin, this);
+    MaintainUsers *mu = new MaintainUsers(admin, parent);
     mu->show();
 }
 
 //same functionality as searching for a book as we have to find a book before we can maintain it
 void mainscreen::on_maintainBooksButton_clicked()
 {
-    SearchBooks *sb = new SearchBooks(this);
+    SearchBooks *sb = new SearchBooks(parent);
     sb->show();
 }
 
@@ -60,21 +60,21 @@ void mainscreen::on_maintainBooksButton_clicked()
 //open the browse catalogue window
 void mainscreen::on_browseCatalogueButton_clicked()
 {
-    browse *b = new browse("browse", "", this);
+    browse *b = new browse("browse", "", parent);
     b->show();
 }
 
 
 void mainscreen::on_searchBookButton_clicked()
 {
-    SearchBooks *sb = new SearchBooks(this);
+    SearchBooks *sb = new SearchBooks(parent);
     sb->show();
 }
 
 
 void mainscreen::on_viewOwnAccountButton_clicked()
 {
-    ViewAccount *va = new ViewAccount(admin, loggedInUsername, this);
+    ViewAccount *va = new ViewAccount(admin, loggedInUsername, parent);
     va->show();
 }
 

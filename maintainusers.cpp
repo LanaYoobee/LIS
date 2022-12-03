@@ -3,12 +3,14 @@
 #include "createaccount.h"
 #include "viewaccount.h"
 
-MaintainUsers::MaintainUsers(int admin, QWidget *parent) :
+MaintainUsers::MaintainUsers(int admin, login *parent) :
     QDialog(parent),
     ui(new Ui::MaintainUsers)
 {
     ui->setupUi(this);
     this->admin = admin;
+
+    this->parent = parent;
 }
 
 MaintainUsers::~MaintainUsers()
@@ -34,7 +36,7 @@ void MaintainUsers::on_userSearch_returnPressed()
     QString searchedUsername = ui->userSearch->text();
 
 
-    ViewAccount *va = new ViewAccount(admin, searchedUsername, this);
+    ViewAccount *va = new ViewAccount(admin, searchedUsername, parent);
     va->show();
 
 }

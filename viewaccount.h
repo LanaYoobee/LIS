@@ -1,6 +1,3 @@
-//#ifndef VIEWACCOUNT_H
-//#define VIEWACCOUNT_H
-
 #pragma once
 
 #include <QDialog>
@@ -19,10 +16,12 @@ class ViewAccount : public QDialog
     Q_OBJECT
 
 public:
-    explicit ViewAccount(int, QString, QWidget *parent = nullptr);
+    explicit ViewAccount(int, QString, login *parent = nullptr);
     ~ViewAccount();
 
     QString searchedUsername;
+
+    login *parent;
 
 private slots:
     void on_quitButton_clicked();
@@ -37,4 +36,3 @@ private:
     Ui::ViewAccount *ui;
 };
 
-//#endif // VIEWACCOUNT_H

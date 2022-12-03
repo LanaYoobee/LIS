@@ -2,11 +2,12 @@
 #include "ui_searchbooks.h"
 #include "browse.h"
 
-SearchBooks::SearchBooks(QWidget *parent) :
+SearchBooks::SearchBooks(login *parent) :
     QDialog(parent),
     ui(new Ui::SearchBooks)
 {
     ui->setupUi(this);
+    this->parent = parent;
 }
 
 SearchBooks::~SearchBooks()
@@ -28,7 +29,7 @@ void SearchBooks::on_searchTitleButton_clicked()
     enteredTitle = ui->titleSearchLineEdit->text(); //get text from the search screen
     enteredTitle = QString("%%1%").arg(enteredTitle);
 
-    browse *b = new browse("searchTitle", enteredTitle, this);
+    browse *b = new browse("searchTitle", enteredTitle, parent);
     b->show();
 
 }
@@ -42,7 +43,7 @@ void SearchBooks::on_searchAuthorButton_clicked()
     enteredAuthor = ui->authorSearchLineEdit->text(); //get text from the search screen
     enteredAuthor = QString("%%1%").arg(enteredAuthor);
 
-    browse *b = new browse("searchAuthor", enteredAuthor, this);
+    browse *b = new browse("searchAuthor", enteredAuthor, parent);
     b->show();
 
 }

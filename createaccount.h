@@ -1,6 +1,4 @@
 #pragma once
-//#ifndef CREATEACCOUNT_H
-//#define CREATEACCOUNT_H
 
 #include <QMainWindow>
 #include "login.h"
@@ -17,8 +15,6 @@ public:
     explicit CreateAccount(QWidget *parent = nullptr);
     ~CreateAccount();
 
-    login *parent;
-
 private slots:
     void on_quitButton_clicked();
 
@@ -27,5 +23,3 @@ private slots:
 private:
     Ui::CreateAccount *ui;
 };
-
-//#endif // CREATEACCOUNT_H

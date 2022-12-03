@@ -1,6 +1,3 @@
-//#ifndef SEARCHBOOKS_H
-//#define SEARCHBOOKS_H
-
 #pragma once
 
 #include <QDialog>
@@ -15,8 +12,10 @@ class SearchBooks : public QDialog
     Q_OBJECT
 
 public:
-    explicit SearchBooks(QWidget *parent = nullptr);
+    explicit SearchBooks(login *parent = nullptr);
     ~SearchBooks();
+
+    login *parent;
 
 private slots:
     void on_quitButton_clicked();
@@ -28,5 +27,3 @@ private slots:
 private:
     Ui::SearchBooks *ui;
 };
-
-//#endif // SEARCHBOOKS_H

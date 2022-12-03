@@ -35,8 +35,6 @@ void login::on_passwordEntry_returnPressed()
 
     setUsername(enteredUser);
 
-    qDebug() << loggedInUser;
-
     //prepare the query. bindValue is used to guard against sql injections
 
     qry.prepare("select username, password, admin, first_name from users where username= :username");
@@ -70,7 +68,6 @@ void login::on_passwordEntry_returnPressed()
         else QMessageBox::critical(this, "LIS", "Incorrect username or password");
     }
 
-    qDebug() << login::loggedInUsername();
 }
 
 void login::setUsername(QString username)
@@ -81,7 +78,6 @@ void login::setUsername(QString username)
 QString login::loggedInUsername()
 {
 
-    qDebug() << loggedInUser;
     return this->loggedInUser;
 }
 
