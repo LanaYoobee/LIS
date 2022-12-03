@@ -16,10 +16,11 @@ class BookDetails : public QDialog
     Q_OBJECT
 
 public:
-    explicit BookDetails(QImage, QString, QString, QDate, QString, login *parent = nullptr);
+    explicit BookDetails(int, QImage, QString, QString, QDate, QString, login *parent = nullptr);
     ~BookDetails();
 
     login *parent;
+    int book_id;
 
 private slots:
     void on_quitButton_clicked();

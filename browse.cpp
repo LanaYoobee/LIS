@@ -96,13 +96,12 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 {
 
-    QString loggedInUsername = "login.loggedInUsername()";
-
-    qDebug() << loggedInUsername;
+    QString loggedInUser = parent->getUsername();
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
     QDate due_date, date_returned;
+    int book_id;
 
 
     //if there are 10 or fewer books, show one row
@@ -118,6 +117,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                 image_large = qry.value(2).toString(); //the URl of the large image from the db
                 author = qry.value(3).toString(); //author of the book from the db
+                book_id = qry.value(5).toInt(); //book ID
                 due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
                 date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
 
@@ -154,7 +154,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
 
             }
         }
@@ -180,6 +180,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
                         author = qry.value(3).toString(); //author of the book from the db
+                        book_id = qry.value(5).toInt(); //book ID
                         due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
                         date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
 
@@ -216,7 +217,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
 
                 }
             }
@@ -231,6 +232,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                     image_large = qry.value(2).toString(); //the URl of the large image from the db
                     author = qry.value(3).toString(); //author of the book from the db
+                    book_id = qry.value(5).toInt(); //book ID
                     due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
                     date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
 
@@ -270,7 +272,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
             }
         }
 
@@ -292,6 +294,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         image_small = qry.value(1).toString(); //the URl of the thumbnail image from the db
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
                         author = qry.value(3).toString(); //author of the book from the db
+                        book_id = qry.value(5).toInt(); //book ID
                         due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
                         date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
 
@@ -328,7 +331,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
 
                 }
             }
@@ -337,8 +340,8 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 
 //open the screen with details of one book
-void browse::showBookDetails(QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
+void browse::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
 {
-    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }

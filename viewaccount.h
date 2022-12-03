@@ -28,7 +28,7 @@ private slots:
 
     void on_deleteUserButton_clicked();
 
-    void showBookDetails(QImage, QString, QString, QDate, QString);
+    void showBookDetails(int, QImage, QString, QString, QDate, QString);
 
     void on_saveAccountButton_clicked();
 

@@ -24,13 +24,14 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
 
     //prepare the query.
     QSqlQuery qry;
-    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date, date_returned from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername order by random()");
+    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date, date_returned from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername and date_returned is null order by random()");
     qry.bindValue(":searchedUsername", searchedUsername);
     qry.exec();
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
     QDate due_date, date_returned;
+    int book_id;
 
     if(qry.first())
     {
@@ -52,6 +53,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
             image_small = qry.value(4).toString(); //the URl of the thumbnail image from the db
             image_large = qry.value(5).toString(); //the URl of the large image from the db
             author = qry.value(6).toString(); //author of the book from the db
+            book_id = qry.value(8).toInt(); //book id
             due_date = QDate::fromString(qry.value(9).toString(),"yyyy-MM-dd"); //date borrowed
             date_returned = QDate::fromString(qry.value(10).toString(),"yyyy-MM-dd"); //date borrowed
 
@@ -89,7 +91,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
             //            ui->gridLayout->addWidget(bookLabel, j, i);
 
             //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, searchedUsername);});
+            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, searchedUsername);});
 
         }
     }
@@ -122,9 +124,9 @@ void ViewAccount::on_deleteUserButton_clicked()
 
 
 //open the screen with details of one book
-void ViewAccount::showBookDetails(QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
+void ViewAccount::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
 {
-    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
 

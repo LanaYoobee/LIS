@@ -20,7 +20,8 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
-    QString loggedInUsername();
+    QString getUsername();
+    int getAdmin();
 
 
 private slots:
@@ -30,6 +31,8 @@ private slots:
 private:
     Ui::login *ui;
     QString loggedInUser;
+    int admin;
     void setUsername(QString);
+    void setAdmin(int);
 
 };

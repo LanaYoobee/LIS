@@ -33,7 +33,7 @@ void login::on_passwordEntry_returnPressed()
     enteredUser = ui->usernameEntry->text();
     enteredPassword = ui->passwordEntry->text();
 
-    setUsername(enteredUser);
+
 
     //prepare the query. bindValue is used to guard against sql injections
 
@@ -60,6 +60,9 @@ void login::on_passwordEntry_returnPressed()
 
             userFirstName = qry.value(3).toString(); //we also need to know their name, so we can greet them
 
+            setUsername(enteredUser);
+            setAdmin(admin);
+
             this->close(); //we can close the login window once we've let the user in
 
             mainscreen *ms = new mainscreen(userFirstName, admin, enteredUser, this); //pass their first name and the admin status to the main screen window
@@ -75,9 +78,20 @@ void login::setUsername(QString username)
     this->loggedInUser = username;
 }
 
-QString login::loggedInUsername()
+QString login::getUsername()
 {
 
     return this->loggedInUser;
+}
+
+void login::setAdmin(int admin)
+{
+    this->admin = admin;
+}
+
+int login::getAdmin()
+{
+
+    return this->admin;
 }
 

@@ -2,13 +2,14 @@
 #include "ui_bookdetails.h"
 #include "login.h"
 
-BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_date, QString searchedUsername, login *parent) :
+BookDetails::BookDetails(int book_id, QImage img, QString title, QString author, QDate due_date, QString searchedUsername, login *parent) :
     QDialog(parent),
     ui(new Ui::BookDetails)
 {
     ui->setupUi(this);
 
     this->parent = parent;
+    this->book_id = book_id;
 
     ui->bookImage->setPixmap(QPixmap::fromImage(img).scaledToHeight(268));
     ui->titleEdit->setText(title);
@@ -16,21 +17,37 @@ BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_da
     ui->authorEdit->setText(author);
     ui->authorEdit->home(1); //display the cursor at the start of the line
     ui->dateEdit->setDate(due_date);
+    ui->returnBookButton->hide();
+    ui->returnBookLabel->hide();
 
-    qDebug() << "logged in user: "+parent->loggedInUsername();
-    qDebug() << "searched user: "+searchedUsername;
+    QString loggedInUser = parent->getUsername();
+    int admin = parent->getAdmin();
 
-    //if the book is available, we can borrow it, otherwise we can only reserve it
-    if (due_date > QDate::currentDate())
-    {
-        ui->borrowBookButton->hide();
-        ui->borrowBookLabel->hide();
-    }
-    else
-    {
-        ui->reserveBookButton->hide();
-        ui->reserveBookLabel->hide();
-    }
+    qDebug() << "admin status: " +admin;
+
+    //if the logged in user is the same user whose books we're looking at, then we can return the book
+
+
+
+        //if the book is available, we can borrow it, otherwise we can only reserve it
+        if (due_date > QDate::currentDate())
+        {
+            ui->borrowBookButton->hide();
+            ui->borrowBookLabel->hide();
+
+            if (loggedInUser == searchedUsername || admin == 1)
+            {
+                ui->returnBookButton->show();
+                ui->returnBookLabel->show();
+            }
+        }
+        else
+        {
+            ui->reserveBookButton->hide();
+            ui->reserveBookLabel->hide();
+        }
+
+
 }
 
 BookDetails::~BookDetails()
@@ -82,6 +99,20 @@ void BookDetails::on_borrowBookButton_clicked()
 
 void BookDetails::on_returnBookButton_clicked()
 {
+
+        //set up variables needed for borrowing the book
+        QSqlQuery qry;
+        QDate date_returned = QDate::currentDate();
+
+        qry.prepare("update borrowing set date_returned = :date_returned where book_id= :book_id");
+        qry.bindValue(":book_id", book_id);
+        qry.bindValue(":date_returned", date_returned);
+        qry.exec();
+
+        if(qry.exec())
+        {
+            QMessageBox::critical(this, "LIS", "Book returned");
+        }
 
 }
 
