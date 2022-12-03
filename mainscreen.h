@@ -15,11 +15,11 @@ class mainscreen : public QDialog
 
 public:
 
-    explicit mainscreen(QString, int, int, login *parent = nullptr);
+    explicit mainscreen(QString, int, QString, login *parent = nullptr);
     ~mainscreen();
 
-    int admin, loggedInUserID;
-    QString userFirstName;
+    int admin;
+    QString userFirstName, loggedInUsername;
 
     login *parent;
 

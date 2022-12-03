@@ -1,5 +1,3 @@
-//#ifndef LOGIN_H
-//#define LOGIN_H
 
 #pragma once
 
@@ -22,13 +20,16 @@ public:
     login(QWidget *parent = nullptr);
     ~login();
 
+    QString loggedInUsername();
 
 
 private slots:
     void on_passwordEntry_returnPressed();
 
+
 private:
     Ui::login *ui;
+    QString loggedInUser;
+    void setUsername(QString);
 
 };
-//#endif // LOGIN_H

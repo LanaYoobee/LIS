@@ -2,7 +2,7 @@
 #include "ui_bookdetails.h"
 #include "login.h"
 
-BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_date, QWidget *parent) :
+BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_date, QString searchedUsername, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::BookDetails)
 {
@@ -14,6 +14,7 @@ BookDetails::BookDetails(QImage img, QString title, QString author, QDate due_da
     ui->authorEdit->setText(author);
     ui->authorEdit->home(1); //display the cursor at the start of the line
     ui->dateEdit->setDate(due_date);
+
 
     //if the book is available, we can borrow it, otherwise we can only reserve it
     if (due_date > QDate::currentDate())

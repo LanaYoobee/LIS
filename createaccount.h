@@ -17,6 +17,8 @@ public:
     explicit CreateAccount(QWidget *parent = nullptr);
     ~CreateAccount();
 
+    login *parent;
+
 private slots:
     void on_quitButton_clicked();
 

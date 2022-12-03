@@ -5,7 +5,7 @@
 #include "searchbooks.h"
 #include "viewaccount.h"
 
-mainscreen::mainscreen(QString userFirstName, int admin, int loggedInUserID, login *parent) :
+mainscreen::mainscreen(QString userFirstName, int admin, QString loggedInUsername, login *parent) :
     QDialog(parent),
     ui(new Ui::mainscreen)
 {
@@ -22,7 +22,7 @@ mainscreen::mainscreen(QString userFirstName, int admin, int loggedInUserID, log
         ui->maintainBooksLabel->hide();
     }
 
-   this->loggedInUserID = loggedInUserID;
+   this->loggedInUsername = loggedInUsername;
    this->admin = admin;
    this->parent = parent;
 }
@@ -74,7 +74,7 @@ void mainscreen::on_searchBookButton_clicked()
 
 void mainscreen::on_viewOwnAccountButton_clicked()
 {
-    ViewAccount *va = new ViewAccount(admin, loggedInUserID, this);
+    ViewAccount *va = new ViewAccount(admin, loggedInUsername, this);
     va->show();
 }
 

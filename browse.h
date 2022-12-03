@@ -26,7 +26,7 @@ private slots:
 
     void displayBooks(QSqlQuery, int);
 
-    void showBookDetails(QImage, QString, QString, QDate);
+    void showBookDetails(QImage, QString, QString, QDate, QString);
 
 private:
     Ui::browse *ui;

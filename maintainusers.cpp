@@ -31,10 +31,10 @@ void MaintainUsers::on_addUserButton_clicked()
 
 void MaintainUsers::on_userSearch_returnPressed()
 {
-    int searchedUserID = ui->userSearch->text().toInt();
+    QString searchedUsername = ui->userSearch->text();
 
 
-    ViewAccount *va = new ViewAccount(admin, searchedUserID, this);
+    ViewAccount *va = new ViewAccount(admin, searchedUsername, this);
     va->show();
 
 }

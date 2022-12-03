@@ -8,6 +8,8 @@ browse::browse(QString callType, QString search, QWidget *parent) :
 {
     ui->setupUi(this);
 
+
+
     ui->welcomeLabel_3->hide();
     if (callType == "searchTitle")
     {
@@ -16,7 +18,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
-        qry.prepare("select title, image_small, image_large, author, users.id, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.user_id = users.ID where title like :title order by random()");
+        qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where title like :title order by random()");
         qry.bindValue(":title", search);
 
         //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
@@ -42,7 +44,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
             //prepare the query.
             QSqlQuery qry, qryCounter;
             int qryCount;
-            qry.prepare("select title, image_small, image_large, author, users.id, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.user_id = users.ID where author like :author order by random()");
+            qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where author like :author order by random()");
             qry.bindValue(":author", search);
 
             //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
@@ -70,7 +72,7 @@ browse::browse(QString callType, QString search, QWidget *parent) :
 
                 //prepare the query. select 30 books at random.
                 QSqlQuery qry;
-                qry.prepare("select title, image_small, image_large, author, users.id, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.user_id = users.ID order by random() limit 30");
+                qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username order by random() limit 30");
                 qry.exec();
                 displayBooks(std::move(qry), 30);
             }
@@ -93,6 +95,11 @@ void browse::on_quitButton_clicked()
 void browse::displayBooks(QSqlQuery qry, int size)
 
 {
+
+    QString loggedInUsername = "login.loggedInUsername()";
+
+    qDebug() << loggedInUsername;
+
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
     QDate due_date, date_returned;
@@ -147,7 +154,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
 
             }
         }
@@ -209,7 +216,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
 
                 }
             }
@@ -263,7 +270,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
             }
         }
 
@@ -321,7 +328,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(img_full, title, author, due_date, loggedInUsername);});
 
                 }
             }
@@ -330,29 +337,8 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 
 //open the screen with details of one book
-void browse::showBookDetails(QImage img_full, QString title, QString author, QDate due_date)
+void browse::showBookDetails(QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
 {
-    BookDetails *bd = new BookDetails(img_full, title, author, due_date, this); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(img_full, title, author, due_date, searchedUsername, this); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
-
-
-//reusable class for getting the images from URLs stored in the database
-//QImage browse::imageFromUrl(QString url)
-//{
-//    QNetworkAccessManager *networkAccessManager = new QNetworkAccessManager;
-
-//    QNetworkRequest request(url);
-
-//    QNetworkReply *reply = networkAccessManager->get(request);
-
-//    QEventLoop loop;
-//    QObject::connect(reply,SIGNAL(finished()),&loop,SLOT(quit()));
-//    loop.exec();
-
-//    QByteArray bytes = reply->readAll();
-//    QImage img(64, 64, QImage::Format_RGB32);
-//    img.loadFromData(bytes);
-
-//    return img;
-//}
