@@ -24,7 +24,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
 
     //prepare the query.
     QSqlQuery qry;
-    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date, date_returned from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername and date_returned is null order by random()");
+    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date, date_returned from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername and borrowing.date_returned is null order by random()");
     qry.bindValue(":searchedUsername", searchedUsername);
     qry.exec();
 

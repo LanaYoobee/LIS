@@ -20,7 +20,7 @@ public:
     ~BookDetails();
 
     login *parent;
-    int book_id;
+    int book_id, borrowing_id;
 
 private slots:
     void on_quitButton_clicked();

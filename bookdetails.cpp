@@ -11,6 +11,9 @@ BookDetails::BookDetails(int book_id, QImage img, QString title, QString author,
     this->parent = parent;
     this->book_id = book_id;
 
+    ui->confirmLabel->hide();
+    ui->confirmLabel_2->hide();
+
     ui->bookImage->setPixmap(QPixmap::fromImage(img).scaledToHeight(268));
     ui->titleEdit->setText(title);
     ui->titleEdit->home(1); //display the cursor at the start of the line
@@ -64,36 +67,26 @@ void BookDetails::on_quitButton_clicked()
 
 void BookDetails::on_borrowBookButton_clicked()
 {
-//    //set up variables needed for borrowing the book
-//    QSqlQuery qry;
-//    QString enteredUser, user, enteredPassword, storedPassword, storedSalt;
-//    int admin;
+    //set up variables needed for borrowing the book
+    QSqlQuery qry;
+    QDate date_borrowed = QDate::currentDate();
+    QString loggedInUser = parent->getUsername();
 
-//    qry.prepare("select id from users where username= :username");
-//    qry.bindValue(":username", login.user);
-//    qry.exec();
+    QDate due_date = date_borrowed.addDays(20);
 
-//    int user_id = qry.value(0).toInt();
+    qry.prepare("INSERT INTO borrowing(book_id, username, date_borrowed, due_date) VALUES(:book_id, :loggedInUser,  :date_borrowed, :due_date);");
 
-//    //collect user input from the mainwindow
-//    enteredUser = ui->usernameEntry->text();
-//    enteredPassword = ui->passwordEntry->text();
+    qry.bindValue(":book_id", book_id);
+     qry.bindValue(":loggedInUser", loggedInUser);
+    qry.bindValue(":date_borrowed", date_borrowed);
+    qry.bindValue(":due_date", due_date);
 
-//    //ui->centralwidget->releaseKeyboard();
-//    //prepare the query. bindValue is used to guard against sql injections
 
-//    qry.prepare("select username, password, admin, first_name from users where username= :username");
-//    qry.bindValue(":username", login.user);
-//    qry.exec();
-//    insert into borrowing (book_id, user_id, date_borrowed, due_date, date_returned)
-//    select books.id,
-//    users.id,
-//    CURRENT_DATE,
-//    date(CURRENT_DATE,'20 days'),
-//    NULL
-
-//    from books, users
-//    where title like '%silkie%' and username = 'admin'
+    if(qry.exec())
+    {
+        ui->confirmLabel_2->show();
+        ui->confirmLabel_2->setText("Book borrowed, due date is "+due_date.toString("dd MMM yyyy"));
+    }
 }
 
 
@@ -107,11 +100,10 @@ void BookDetails::on_returnBookButton_clicked()
         qry.prepare("update borrowing set date_returned = :date_returned where book_id= :book_id");
         qry.bindValue(":book_id", book_id);
         qry.bindValue(":date_returned", date_returned);
-        qry.exec();
 
         if(qry.exec())
         {
-            QMessageBox::critical(this, "LIS", "Book returned");
+            ui->confirmLabel->show();
         }
 
 }
