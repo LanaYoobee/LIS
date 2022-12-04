@@ -6,7 +6,8 @@ Desktop application for a Library Management System
 
 * All code was written in Qt Creator.
 * All data is stored in a SQLite database.
-* Password protection is from https://github.com/andreybutov/qt-bcrypt
+* Password protection algorithm from https://github.com/andreybutov/qt-bcrypt
+* Initial books data set from https://www.kaggle.com/datasets/saurabhbagchi/books-dataset
 
 ## Usage
 
