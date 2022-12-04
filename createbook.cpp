@@ -14,7 +14,7 @@ CreateBook::~CreateBook()
     delete ui;
 }
 
-void CreateBook::on_saveAccountButton_clicked()
+void CreateBook::on_saveBookButton_clicked()
 {
     QString title, author, img_small, img_full;
 

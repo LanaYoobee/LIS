@@ -16,7 +16,7 @@ public:
     ~CreateBook();
 
 private slots:
-    void on_saveAccountButton_clicked();
+    void on_saveBookButton_clicked();
 
     void on_quitButton_clicked();
 
