@@ -2,9 +2,11 @@
 
 Desktop application for a Library Management System
 
-## Data
+## Tools
 
-All data is stored in a SQLite table.
+* All code was written in Qt Creator.
+* All data is stored in a SQLite database.
+* Password protection is from https://github.com/andreybutov/qt-bcrypt
 
 ## Usage
 
