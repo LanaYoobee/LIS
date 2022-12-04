@@ -23,21 +23,11 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
 
     //prepare the query.
     QSqlQuery qry;
-    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername order by random()");
-    qry.bindValue(":searchedUsername", searchedUsername);
-    qry.exec();
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
     QDate due_date, date_returned;
     int book_id, borrowed_books;
-
-    if(qry.first())
-    {
-        ui->firstNameLineEdit->setText(qry.value(0).toString());
-        ui->surnameLineEdit->setText(qry.value(1).toString());
-        ui->phoneLineEdit->setText(qry.value(2).toString());
-    }
 
     qry.prepare("select count(*) from borrowing where borrowing.username = :searchedUsername");
     qry.bindValue(":searchedUsername", searchedUsername);
@@ -47,6 +37,22 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
     {
         borrowed_books = qry.value(0).toInt();
     }
+
+
+    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername order by random()");
+    qry.bindValue(":searchedUsername", searchedUsername);
+    qry.exec();
+
+
+
+    if(qry.first())
+    {
+        ui->firstNameLineEdit->setText(qry.value(0).toString());
+        ui->surnameLineEdit->setText(qry.value(1).toString());
+        ui->phoneLineEdit->setText(qry.value(2).toString());
+    }
+
+
 
     if (borrowed_books != 0)
     {
