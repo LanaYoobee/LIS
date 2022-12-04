@@ -1,4 +1,4 @@
-# Library Information System (LIS
+# Library Information System (LIS)
 
 Desktop application for a Library Management System
 
