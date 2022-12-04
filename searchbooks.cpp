@@ -9,6 +9,14 @@ SearchBooks::SearchBooks(login *parent) :
 {
     ui->setupUi(this);
     this->parent = parent;
+
+    int admin = parent->getAdmin();
+
+    if (admin != 1)
+    {
+        ui->addBookButton->hide();
+        ui->addBookLabel->hide();
+    }
 }
 
 SearchBooks::~SearchBooks()

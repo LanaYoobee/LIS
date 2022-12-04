@@ -23,14 +23,14 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
 
     //prepare the query.
     QSqlQuery qry;
-    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where borrowing.username = :searchedUsername order by random()");
+    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where users.username = :searchedUsername order by random()");
     qry.bindValue(":searchedUsername", searchedUsername);
     qry.exec();
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
     QDate due_date, date_returned;
-    int book_id;
+    int book_id, borrowed_books;
 
     if(qry.first())
     {
@@ -39,7 +39,17 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
         ui->phoneLineEdit->setText(qry.value(2).toString());
     }
 
+    qry.prepare("select count(*) from borrowing where borrowing.username = :searchedUsername");
+    qry.bindValue(":searchedUsername", searchedUsername);
     qry.exec();
+
+    if(qry.first())
+    {
+        borrowed_books = qry.value(0).toInt();
+    }
+
+    if (borrowed_books != 0)
+    {
 
     //we only show five borrowed books
 
@@ -93,6 +103,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
             connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
 
         }
+    }
     }
 
 }
