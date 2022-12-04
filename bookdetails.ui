@@ -91,7 +91,7 @@
     </font>
    </property>
    <property name="focusPolicy">
-    <enum>Qt::NoFocus</enum>
+    <enum>Qt::StrongFocus</enum>
    </property>
    <property name="text">
     <string/>
@@ -330,8 +330,8 @@
   <widget class="QLabel" name="confirmLabel">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>270</y>
+     <x>230</x>
+     <y>260</y>
      <width>647</width>
      <height>151</height>
     </rect>
@@ -358,7 +358,108 @@
     <set>Qt::NoTextInteraction</set>
    </property>
   </widget>
+  <widget class="QLabel" name="updateBookLabel">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>664</y>
+     <width>121</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Update</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="updateBookButton">
+   <property name="geometry">
+    <rect>
+     <x>649</x>
+     <y>600</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/images/icons8-edit-file-64.png</normaloff>:/images/images/icons8-edit-file-64.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="deleteBookButton">
+   <property name="geometry">
+    <rect>
+     <x>477</x>
+     <y>600</y>
+     <width>64</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/images/images/icons8-edit-file-64.png</normaloff>:/images/images/icons8-edit-file-64.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>64</width>
+     <height>64</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="deleteBookLabel">
+   <property name="geometry">
+    <rect>
+     <x>448</x>
+     <y>664</y>
+     <width>121</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Inter</family>
+     <pointsize>19</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Delete</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>titleEdit</tabstop>
+  <tabstop>authorEdit</tabstop>
+  <tabstop>dateEdit</tabstop>
+  <tabstop>borrowBookButton</tabstop>
+  <tabstop>reserveBookButton</tabstop>
+  <tabstop>returnBookButton</tabstop>
+  <tabstop>deleteBookButton</tabstop>
+  <tabstop>updateBookButton</tabstop>
+  <tabstop>quitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

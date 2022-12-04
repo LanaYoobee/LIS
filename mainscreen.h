@@ -1,9 +1,11 @@
-//#ifndef MAINSCREEN_H
-//#define MAINSCREEN_H
 
 #pragma once
 #include <QDialog>
 #include "login.h"
+#include "browse.h"
+#include "maintainusers.h"
+#include "searchbooks.h"
+
 
 namespace Ui {
 class mainscreen;
@@ -39,5 +41,3 @@ private slots:
 private:
     Ui::mainscreen *ui;
 };
-
-//#endif // MAINSCREEN_H

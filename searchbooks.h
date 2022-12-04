@@ -3,6 +3,7 @@
 #include <QDialog>
 #include "login.h"
 
+
 namespace Ui {
 class SearchBooks;
 }
@@ -23,6 +24,8 @@ private slots:
     void on_searchTitleButton_clicked();
 
     void on_searchAuthorButton_clicked();
+
+    void on_addBookButton_clicked();
 
 private:
     Ui::SearchBooks *ui;

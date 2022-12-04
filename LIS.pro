@@ -14,6 +14,7 @@ SOURCES += \
     bookdetails.cpp \
     browse.cpp \
     createaccount.cpp \
+    createbook.cpp \
     imagefromurl.cpp \
     login.cpp \
     main.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     bookdetails.h \
     browse.h \
     createaccount.h \
+    createbook.h \
     imagefromurl.h \
     login.h \
     mainscreen.h \
@@ -47,6 +49,7 @@ FORMS += \
     bookdetails.ui \
     browse.ui \
     createaccount.ui \
+    createbook.ui \
     login.ui \
     mainscreen.ui \
     maintainusers.ui \

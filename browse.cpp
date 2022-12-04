@@ -18,7 +18,7 @@ this->parent = parent;
         //prepare the query.
         QSqlQuery qry, qryCounter;
         int qryCount;
-        qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where title like :title order by random()");
+        qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where title like :title order by random()");
         qry.bindValue(":title", search);
 
         //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
@@ -44,7 +44,7 @@ this->parent = parent;
             //prepare the query.
             QSqlQuery qry, qryCounter;
             int qryCount;
-            qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where author like :author order by random()");
+            qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username where author like :author order by random()");
             qry.bindValue(":author", search);
 
             //we're doing a second count query because QSqlQuery.size() is not supported in sqlite
@@ -72,7 +72,7 @@ this->parent = parent;
 
                 //prepare the query. select 30 books at random.
                 QSqlQuery qry;
-                qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date, date_returned from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username order by random() limit 30");
+                qry.prepare("select title, image_small, image_large, author, users.username, books.id, due_date from books left join borrowing on borrowing.book_id = books.ID left join users on borrowing.username = users.username order by random() limit 30");
                 qry.exec();
                 displayBooks(std::move(qry), 30);
             }
@@ -96,11 +96,10 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 {
 
-    QString loggedInUser = parent->getUsername();
 
     QString title, image_small, image_large, author;
     QImage img_thumb, img_full;
-    QDate due_date, date_returned;
+    QDate due_date;
     int book_id;
 
 
@@ -118,10 +117,9 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 image_large = qry.value(2).toString(); //the URl of the large image from the db
                 author = qry.value(3).toString(); //author of the book from the db
                 book_id = qry.value(5).toInt(); //book ID
-                due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
-                date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
+                due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //due date
 
-                if (due_date.isNull() || (!due_date.isNull() && !date_returned.isNull()))
+                if (due_date.isNull())
                     due_date = QDate::currentDate();
 
 
@@ -154,7 +152,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
 
             }
         }
@@ -181,10 +179,9 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
                         author = qry.value(3).toString(); //author of the book from the db
                         book_id = qry.value(5).toInt(); //book ID
-                        due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
-                        date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
+                        due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //due date
 
-                        if (due_date.isNull() || (!due_date.isNull() && !date_returned.isNull()))
+                        if (due_date.isNull())
                             due_date = QDate::currentDate();
                     }
 
@@ -217,7 +214,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
 
                 }
             }
@@ -233,10 +230,9 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     image_large = qry.value(2).toString(); //the URl of the large image from the db
                     author = qry.value(3).toString(); //author of the book from the db
                     book_id = qry.value(5).toInt(); //book ID
-                    due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
-                    date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
+                    due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //due date
 
-                    if (due_date.isNull() || (!due_date.isNull() && !date_returned.isNull()))
+                    if (due_date.isNull())
                         due_date = QDate::currentDate();
                 }
 
@@ -272,7 +268,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                 //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                 //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
+                connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
             }
         }
 
@@ -295,10 +291,9 @@ void browse::displayBooks(QSqlQuery qry, int size)
                         image_large = qry.value(2).toString(); //the URl of the large image from the db
                         author = qry.value(3).toString(); //author of the book from the db
                         book_id = qry.value(5).toInt(); //book ID
-                        due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //date borrowed
-                        date_returned = QDate::fromString(qry.value(7).toString(),"yyyy-MM-dd"); //date borrowed
+                        due_date = QDate::fromString(qry.value(6).toString(),"yyyy-MM-dd"); //due date
 
-                        if (due_date.isNull() || (!due_date.isNull() && !date_returned.isNull()))
+                        if (due_date.isNull())
                             due_date = QDate::currentDate();
                     }
 
@@ -331,7 +326,7 @@ void browse::displayBooks(QSqlQuery qry, int size)
                     //            ui->gridLayout->addWidget(bookLabel, j, i);
 
                     //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, loggedInUser);});
+                    connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
 
                 }
             }
@@ -340,8 +335,8 @@ void browse::displayBooks(QSqlQuery qry, int size)
 
 
 //open the screen with details of one book
-void browse::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
+void browse::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date)
 {
-    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }

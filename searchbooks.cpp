@@ -1,5 +1,6 @@
 #include "searchbooks.h"
 #include "ui_searchbooks.h"
+#include "createbook.h"
 #include "browse.h"
 
 SearchBooks::SearchBooks(login *parent) :
@@ -48,3 +49,9 @@ void SearchBooks::on_searchAuthorButton_clicked()
 
 }
 
+
+void SearchBooks::on_addBookButton_clicked()
+{
+    CreateBook *cb = new CreateBook(this);
+    cb->show();
+}

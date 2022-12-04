@@ -1,10 +1,9 @@
-//#ifndef MAINTAINUSERS_H
-//#define MAINTAINUSERS_H
-
 #pragma once
 
 #include <QDialog>
 #include "login.h"
+#include "createaccount.h"
+#include "viewaccount.h"
 
 namespace Ui {
 class MaintainUsers;
@@ -32,5 +31,3 @@ private slots:
 private:
     Ui::MaintainUsers *ui;
 };
-
-//#endif // MAINTAINUSERS_H

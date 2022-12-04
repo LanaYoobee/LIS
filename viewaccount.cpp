@@ -11,7 +11,6 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
     this->parent = parent;
 
     ui->confirmLabel->hide();
-    ui->confirmLabel_2->hide();
 
     this->searchedUsername = searchedUsername;
 
@@ -24,7 +23,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
 
     //prepare the query.
     QSqlQuery qry;
-    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date, date_returned from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where borrowing.username = :searchedUsername and borrowing.date_returned is null order by random()");
+    qry.prepare("select first_name, surname, phone, title, image_small, image_large, author, users.username, books.id, due_date from users left join borrowing on borrowing.username = users.username left join books on borrowing.book_id = books.ID where borrowing.username = :searchedUsername order by random()");
     qry.bindValue(":searchedUsername", searchedUsername);
     qry.exec();
 
@@ -91,7 +90,7 @@ ViewAccount::ViewAccount(int admin, QString searchedUsername, login *parent) :
             //            ui->gridLayout->addWidget(bookLabel, j, i);
 
             //this code allows us to interact with dynamically generated buttons and pass the parameters to the next screen
-            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date, searchedUsername);});
+            connect(bookButton, &QPushButton::clicked, [=](){showBookDetails(book_id, img_full, title, author, due_date);});
 
         }
     }
@@ -119,14 +118,15 @@ void ViewAccount::on_deleteUserButton_clicked()
     if(qry.exec()) //check if there were any results for this username
     {
         ui->confirmLabel->show();
+        ui->confirmLabel->setText("User Deleted");
     }
 }
 
 
 //open the screen with details of one book
-void ViewAccount::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date, QString searchedUsername)
+void ViewAccount::showBookDetails(int book_id, QImage img_full, QString title, QString author, QDate due_date)
 {
-    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, searchedUsername, parent); //pass thef full image and the title to the other screen
+    BookDetails *bd = new BookDetails(book_id, img_full, title, author, due_date, parent); //pass thef full image and the title to the other screen
     bd->show(); //show the details of the book window
 }
 
@@ -164,11 +164,10 @@ void ViewAccount::on_saveAccountButton_clicked()
         qry.bindValue(":updatedPhone", updatedPhone);
     }
 
-    qry.exec();
-
     if(qry.exec()) //check if query executed
     {
-        ui->confirmLabel_2->show();
+        ui->confirmLabel->show();
+        ui->confirmLabel->setText("User Updated");
     }
 }
 

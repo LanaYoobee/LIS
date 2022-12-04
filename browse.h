@@ -7,6 +7,7 @@
 #include "login.h"
 #include "imagefromurl.h"
 
+
 namespace Ui {
 class browse;
 }
@@ -26,7 +27,7 @@ private slots:
 
     void displayBooks(QSqlQuery, int);
 
-    void showBookDetails(int, QImage, QString, QString, QDate, QString);
+    void showBookDetails(int, QImage, QString, QString, QDate);
 
 private:
     Ui::browse *ui;
