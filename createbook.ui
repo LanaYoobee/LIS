@@ -293,6 +293,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>titleLineEdit</tabstop>
+  <tabstop>authorLineEdit</tabstop>
+  <tabstop>img_smallLineEdit</tabstop>
+  <tabstop>img_fullLineEdit</tabstop>
+  <tabstop>saveBookButton</tabstop>
+  <tabstop>quitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>
